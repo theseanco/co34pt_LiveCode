@@ -1,0 +1,7 @@
+d1 <- stream "127.0.0.1" 57121 dirt {timestamp = BundleStamp, latency = 0.1}
+
+d1 $ stack[
+brak $ jux (iter 4) $ sound "bd:1*8",
+slow 4 $ sometimesBy 0.4 (density 4) $ sometimesBy 0.8 (# speed "3") $ sound "cp*4",
+sometimes (density 2) $ sound (samples "amencutup*8" (irand(10))) # unit "c" # speed "16" # pan (slow 4 $ "0 1 -1 0.5 -0.5")
+]
