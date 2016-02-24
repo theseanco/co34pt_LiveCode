@@ -6,6 +6,10 @@ Increases memory allocation
 Adds more buffers
 Boots server and proxyspace
 Automatically loads all samples in repo inside a dictionary, following the format d["foldername"][x]
+Loads SynthDefs
+Activates StageLimiter
+
+NB: StageLimiter requires BatLib quark
 
 */
 
@@ -27,5 +31,7 @@ Task({
 				Buffer.read(s,sf.fullPath);
 			});
 		)});
+		("SynthDefs.scd").loadRelative;
+		StageLimiter.activate;
 }}).start;
 )
