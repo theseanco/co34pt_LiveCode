@@ -29,5 +29,3 @@ Task({
 		)});
 }}).start;
 )
-
-d["water"][0].play
