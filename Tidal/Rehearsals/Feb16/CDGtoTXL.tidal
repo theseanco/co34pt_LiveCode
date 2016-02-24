@@ -1,0 +1,5 @@
+d1 <- stream "127.0.0.1" 57121 dirt {timestamp = BundleStamp, latency = 0.2}
+
+d1 $ sound "bd"
+
+d1 silence

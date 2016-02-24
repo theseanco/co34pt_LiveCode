@@ -11,3 +11,20 @@ s.waitForBoot {
     d.start([57121, 57122]);        // start listening on port 57120 and 57121
 }
 )
+
+(
+Server.local.options.memSize * 128;
+s.options.numBuffers=4000;
+s.boot;
+p = ProxySpace.push(s);
+p.makeTempoClock;
+p.clock.tempo=1;
+)
+
+~in = {Saw.ar(1)}
+
+~one = {DFM1.ar(~in.ar,freq:1000,res:0.1,inputgain:1,type:0,noiselevel:0.0003,mul:0.1)}
+
+~one.clear
+
+~one.play
