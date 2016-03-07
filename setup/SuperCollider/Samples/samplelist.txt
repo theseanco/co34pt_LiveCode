@@ -1,0 +1,26 @@
+Sample List - co34pt Livecode
+
+hidetail = High detail sounds such as scraping, scrabbling, etc.
+
+water = Water sounds recorded from the river derwent
+
+k = Standard everyday kicks, for use everywhere
+
+k2 = Kicks with a sub tail, good for emphasis
+
+khc = hardcore kicks. Not to be f_cked with
+
+h = hihats, good, all-purpose short ones
+
+h2 = hihats, some more interesting ones
+
+p1 = Percs, inoffensive ones
+
+p2 = Percs, offensive ones
+
+pp = Pitched Percussion, first three are grouped
+
+illegalparties = "They hold illegal parties playing techno music"
+
+shout = vocal shouts
+

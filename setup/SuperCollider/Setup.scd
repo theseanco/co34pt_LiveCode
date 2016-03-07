@@ -33,11 +33,7 @@ Task({
 		)});
 		("SynthDefs.scd").loadRelative;
 		StageLimiter.activate;
+		1.wait;
+		"done!".postln
 }}).start;
 )
-
-~one = {Pan2.ar(DFM1.ar(WhiteNoise.ar(0.3),MouseX.kr(20,400,1).round(20),2,mul:0.1),LFNoise1.kr(0.9))}
-
-~one.play
-
-~one.clear
