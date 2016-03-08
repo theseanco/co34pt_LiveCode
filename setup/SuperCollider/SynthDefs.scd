@@ -55,6 +55,16 @@ SynthDef(\wtabl,
 SynthDef(\bplay,
 	{arg out = 0, buf = 0, rate = 1, amp = 0.5, pan = 0, pos = 0, rel=15;
 		var sig,env ;
+		sig = Pan2.ar(PlayBuf.ar(2,buf,BufRateScale.ir(buf) * rate,1,BufDur.kr(buf)*pos*44100,doneAction:2),pan);
+		env = EnvGen.ar(Env.linen(0.0,rel,0),doneAction:2);
+		sig = sig * env;
+		sig = sig * amp;
+		Out.ar(out,sig);
+}).add;
+
+SynthDef(\bplaym,
+	{arg out = 0, buf = 0, rate = 1, amp = 0.5, pan = 0, pos = 0, rel=15;
+		var sig,env ;
 		sig = Pan2.ar(PlayBuf.ar(1,buf,BufRateScale.ir(buf) * rate,1,BufDur.kr(buf)*pos*44100,doneAction:2),pan);
 		env = EnvGen.ar(Env.linen(0.0,rel,0),doneAction:2);
 		sig = sig * env;
@@ -173,8 +183,19 @@ SynthDef(\bpfbuf, {
 	sig = sig * env;
 	sig = Pan2.ar(sig,pan,amp);
 	Out.ar(out,sig);
-});
-)
+}).add;
+);
 
+//SinFB Bass
+
+(
+SynthDef(\sinfb, {
+	arg freq = 440, atk = 0.01, sus = 0, rel = 1, fb = 0, amp = 0.3, out = 0, pan=0;
+	var sig, env;
+	env = EnvGen.ar(Env.linen(atk,sus,rel),1,1,0,1,2);
+	sig = SinOscFB.ar(freq,fb,amp);
+	Out.ar(out,Pan2.ar(sig,pan,amp));
+}).add;
+);
 
 )
