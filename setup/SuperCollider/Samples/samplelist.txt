@@ -28,4 +28,6 @@ cb = cowbell.
 
 sn = standard everyday snares
 
+cp = standard everyday claps
+
 
