@@ -14,7 +14,7 @@
 
 //come closer if you like, it's a bit lonely up here...
 
-//I forgot to say. I'm doing the creative arts practice MA at culture lab.
+//I forgot to say. I'm doing the creative arts practice MA at culture lab
 
 //it's BRILLIANT. ESPECIALLY TOM.
 
@@ -46,7 +46,9 @@
 ~rise.play
 ~rise2.play
 
-~k = Pbind(\instrument,\bplay,\buf,d["k"][0],\dur,Pbjorklund2(3,8)/10,\amp,1)
+~k.play
+
+~k = Pbind(\instrument,\bplay,\buf,d["k"][0],\dur,Pbjorklund2(3,8)/10,\amp,1,\rate,Pseq([1.5,2],inf))
 
 ~k2 = Pbind(\instrument,\bplay,\buf,d["k"][0],\dur,Pbjorklund2(5,8)/10,\amp,1,\rate,Pwhite(8,20))
 
@@ -54,7 +56,7 @@
 
 
 
-~k2.play
+~k.play
 
 ~rise.stop
 
@@ -64,17 +66,25 @@
 
 
 
-~sn = Pbind(\instrument,\bplay,\buf,d["sn"][2],\amp,Pwhite(0.5,1.0),\dur,Pbjorklund2(Pwhite(1,15),16)/2.5)
+~sn = Pbind(\instrument,\bplay,\buf,d["sn"][2],\amp,Pwhite(0.5,1.0),\dur,Pbjorklund2(Pwhite(5,15),16)/2.5)
 
 ~rise = Pbind(\instrument,\sinfb,\dur,0.1,\freq,Pseq((1..20),inf)*(Pkr(~fund)*4),\rel,2,\amp,0.3)
 
 ~rise.play
 
+~shout.stop
+
+
+~k.stop
+
 ~sn.play
+~h.play
 
-~h = Pbind(\instrument,\bplay,\buf,d["h"][0],\dur,Pbjorklund2(Pwhite(1,7),8)/10,\amp,1)
+~h = Pbind(\instrument,\bplay,\buf,d["h"][0],\dur,Pbjorklund2(Pwhite(1,7),8)/10,\amp,1,\rate,Pexprand(1,1.4).round(0.1))
 
-~stabs = Pbind(\instrument,\bplay,\buf,d["edmstab"][0],\rate,Pseq([1,1,0.9,1.1].stutter(3),inf),\amp,1.4,\dur,Pbjorklund2(3,8)/10)
+~stabs = Pbind(\instrument,\bplay,\buf,d["edmstab"][0],\rate,Pseq([1,1,0.9,1.1].stutter(3),inf),\amp,1.4,\dur,Pbjorklund2(3,8)/5)
+
+~stabs.play
 
 //here comes the drop. lol.
 
@@ -83,6 +93,34 @@ p.clock.tempo=1.08
 ~stabs2 = Pbind(\instrument,\bplay,\buf,d["edmstab"][0],\rate,Pseq([1,1,0.9,1.1].stutter(3),inf)*4,\amp,1.5,\dur,Pbjorklund2(Pwhite(1,7),8)/10)
 
 ~stabs2.play
+
+~techno = Pbind(\instrument,\vplay,\buf,d["illegalparties"][0],\rel,0.1,\pos,0.68,\amp,0.8,\rate,1.9,\dur,Pbjorklund2(5,8)/10)
+
+~k2 = Pbind(\instrument,\bplay,\buf,d["k2"][0],\dur,Pbjorklund2(6,8),\rate,2,\amp,3)
+
+~k2.play
+
+~clap = Pbind(\instrument,\bplay,\buf,d["cp"][4],\dur,0.4,\amp,2)
+
+
+
+(
+~k.play;[
+~k2.play;
+)
+
+~clap.play
+
+(
+~stabs2.stop;
+~stabs.stop;
+~h.stop;
+~sn.stop;
+)
+
+~techno.play
+
+~stabs2.stop
 
 p.clock.tempo=1.08
 
