@@ -18,9 +18,9 @@ In the folder 'Setup/SuperCollider' you can find my setupfile for SuperCollider,
 
 The optional requirements for StageLimiter and SuperDirt are:
 
->= SuperCollider 3.6.6, preferably 3.7
-SuperDirt quark
-BatLib quark (for StageLimiter)
+- SuperCollider 3.6.6, preferably 3.7
+- SuperDirt quark
+- BatLib quark (for StageLimiter)
 
 There are instructions in the setupfile on how to use it without these components
 
