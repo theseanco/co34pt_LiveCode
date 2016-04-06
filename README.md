@@ -2,7 +2,7 @@
 
 Here you can find all of the files required to run my Live Coding setup, including samples, setup files and the resulting code from gigs and rehearsals. This is an attempt to make aspects of my live coding practice open for deconstruction by others and help others learn a bit about live coding in SuperCollider, which has a whole host of different techniques, not all of which are common knowledge or easy to discover.
 
-This repo contains code I use for SuperCollider and SuperDirt, however most of my work uses SuperCollider, so the code for SuperDirt will be much slower to be updated
+This repo contains code I use for SuperCollider and SuperDirt, howeverI mostly use SuperCollider, so the code for SuperDirt will be updated much more slowly
 
 ## Setup files
 
