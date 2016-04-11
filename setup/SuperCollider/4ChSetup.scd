@@ -18,6 +18,7 @@ NanoKontrol
 (
 s.options.numBuffers = 1024 * 16;
 s.options.memSize = 8192 * 16;
+s.options.numOutputBusChannels = 4;
 s.boot;
 p=ProxySpace.push(s);
 p.makeTempoClock;
@@ -33,16 +34,16 @@ Task({
 			Buffer.read(s,sf.fullPath);
 		});
 	)});
-	("SynthDefs.scd").loadRelative;
+	("SynthDefs4ch.scd").loadRelative;
 	//comment out this line if you do not have the BatLib quark
 	1.wait;
 	//Comment out the next four lines if you do not have SuperDirt installed
-	q = SuperDirt(2, s); // two output channels
+	q = SuperDirt(4, s); // two output channels
 	q.loadSoundFiles;   // load samples (path can be passed) mono is assumed.
 	s.sync; // wait for samples
 	q.start([57121, 57122]);        // start listening on port 57120 and 57121
 	3.wait;
-	StageLimiter.activate;
+	StageLimiter.activate(numChannels:4);
 	"Setup done!".postln;
 }).start;
 )

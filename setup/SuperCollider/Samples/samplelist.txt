@@ -30,4 +30,6 @@ sn = standard everyday snares
 
 cp = standard everyday claps
 
+stairs = Added for EulerRoom, contains two samples, a gestural one and a percussive one
+
 
