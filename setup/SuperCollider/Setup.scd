@@ -36,7 +36,6 @@ Task({
 	)});
 	("SynthDefs.scd").loadRelative;
 	//comment out this line if you do not have the BatLib quark
-	StageLimiter.activate;
 	1.wait;
 	//Comment out the next four lines if you do not have SuperDirt installed
 	q = SuperDirt(2, s); // two output channels
@@ -44,6 +43,7 @@ Task({
 	s.sync; // wait for samples
 	q.start([57121, 57122]);        // start listening on port 57120 and 57121
 	3.wait;
+	StageLimiter.activate;
 	"Setup done!".postln;
 }).start;
 )
