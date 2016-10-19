@@ -38,10 +38,10 @@ SynthDef(\vplaym,
 }).add;
 
 SynthDef(\vplay,
-	{arg out = 0, buf = 0, rate = 1, amp = 0.5, pan = 0, atk=0.01, rel=1, pos=0;
+	{arg out = 0, buf = 0, rate = 1, amp = 0.5, pan = 0, atk=0.01, rel=1, rel2= 0, pos=0;
 		var sig, env;
 		sig = Pan2.ar(PlayBuf.ar(2,buf,BufRateScale.ir(buf) * rate,1,BufDur.kr(buf)*pos*44100,doneAction:2),pan);
-		env = EnvGen.ar(Env.linen(0.0,rel,0.0,1));
+		env = EnvGen.ar(Env.linen(0.0,rel,rel2,1));
 		sig = sig * env;
 		sig = sig * amp;
 		Out.ar(out,sig);
