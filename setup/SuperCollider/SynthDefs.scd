@@ -82,6 +82,16 @@ SynthDef(\bplaym,
 		Out.ar(out,sig);
 }).add;
 
+SynthDef(\bplaymr,
+	{arg out = 0, buf = 0, rate = 1, amp = 0.5, pan = 0, pos = 0, rel=3;
+		var sig,env ;
+		sig = Pan2.ar(PlayBuf.ar(1,buf,rate.neg,1,BufDur.kr(buf)*44100-2,doneAction:2),pan);
+		env = EnvGen.ar(Env.linen(0.0,rel,0),doneAction:2);
+		sig = sig * env;
+		sig = sig * amp;
+		Out.ar(out,sig);
+}).add;
+
 //eli fieldsteel's instrument
 
 (
@@ -197,7 +207,6 @@ SynthDef(\bpfbuf, {
 );
 
 //SinFB Bass
-
 (
 SynthDef(\sinfb, {
 	arg freq = 440, atk = 0.01, sus = 0, rel = 1, fb = 0, amp = 0.3, out = 0, pan=0;
@@ -209,4 +218,51 @@ SynthDef(\sinfb, {
 }).add;
 );
 
+SynthDef(\ring1,
+	{
+		arg f = 45, a = 9, d = 0.6, pan = 0, amp = 1, out = 0;
+		var sig, env;
+		env = Line.kr(0,1,d);
+		env = FreeSelfWhenDone.kr(env);
+		sig = Impulse.ar(0);
+		sig = Ringz.ar(sig,f,d,a);
+		Out.ar(out,Pan2.ar(sig.tanh,pan) * amp)
+	};
+).add;
+
+SynthDef(\ring2,
+	{
+		arg f = 9000, a = 2, d = 0.1, amp = 1, pan = 2, out = 0;
+		var sig, env;
+		env = Line.kr(0,1,d);
+		env = FreeSelfWhenDone.kr(env);
+		sig = Impulse.ar(0);
+		sig = Ringz.ar(sig,f,d,a);
+		Out.ar(out,Pan2.ar(sig.tanh,pan) * amp)
+	};
+).add;
+
+SynthDef(\ring3,
+	{
+		arg f = 50, a = 3, d = 1, pan = 0, amp = 1, out = 0;
+		var sig, env;
+		env = Line.kr(0,1,d);
+		env = FreeSelfWhenDone.kr(env);
+		sig = Impulse.ar(0);
+		sig = Ringz.ar(sig,f,d,a);
+		Out.ar(out,Pan2.ar(sig.tanh,pan) * amp)
+	};
+).add;
+
+SynthDef(\ring4,
+	{
+		arg f = 8000, a = 1, d = 0.3, pan = 0, amp = 1, out = 0;
+		var sig, env;
+		env = Line.kr(0,1,d);
+		env = FreeSelfWhenDone.kr(env);
+		sig = Impulse.ar(0);
+		sig = Ringz.ar(sig,f,d,a);
+		Out.ar(out,Pan2.ar(sig.tanh,pan) * amp)
+	};
+).add;
 )

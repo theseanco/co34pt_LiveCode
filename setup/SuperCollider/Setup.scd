@@ -17,12 +17,12 @@ NanoKontrol
 
 (
 s.options.numBuffers = 1024 * 16;
-s.options.memSize = 8192 * 16;
+s.options.memSize = 8192 * 64;
 s.boot;
+s.scope;
 p=ProxySpace.push(s);
 p.makeTempoClock;
 p.clock.tempo = 1;
-s.scope;
 Task({
 	3.wait;
 	d = Dictionary.new;
@@ -34,13 +34,8 @@ Task({
 		});
 	)});
 	("SynthDefs.scd").loadRelative;
+	("snippets.scd").loadRelative;
 	//comment out this line if you do not have the BatLib quark
-	1.wait;
-	//Comment out the next four lines if you do not have SuperDirt installed
-	q = SuperDirt(2, s); // two output channels
-	q.loadSoundFiles;   // load samples (path can be passed) mono is assumed.
-	s.sync; // wait for samples
-	q.start([57121, 57122]);        // start listening on port 57120 and 57121
 	3.wait;
 	StageLimiter.activate;
 	"Setup done!".postln;
