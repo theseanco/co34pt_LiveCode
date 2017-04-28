@@ -1,0 +1,329 @@
+       (
+f = File.new(thisProcess.nowExecutingPath.dirname +/+ "codeExecutedBerlinAlgo23-3-17-gig.txt","w");
+this.codeDump = { |str| SystemClock.sched(0.0,{arg time; f.write(time.asString)}); f.write("       ");  f.write(str);  f.putChar($\n); };
+~r = {0};
+d[\scale] = Scale.chromatic(\et53);
+p.fadeTime = 2;
+)
+65.631388348       ~shep = {var intervals, amps; #intervals, amps = Shepard.kr(5,-0.008); (SinOsc.ar( (intervals + 60).midicps) * amps).sum * 0.05 ! 2}
+80.829605816       ~shep.play
+82.186034825       (
+l = Pbjorklund2(Pwhite(1,10),16)/4;
+~t1 = Pbind(\instrument,\bplay,\buf,d["t"][0],\dur,Pbjorklund2(5,16,inf,Pwhite(0,0).asStream)/4,\amp,1,\pan,Pwhite(-0.5,0.5));
+~t2 = Pbind(\instrument,\bplay,\buf,d["t"][0],\dur,Pbjorklund2(5,16,inf,Pwhite(0,6).asStream)/4,\amp,1,\pan,Pwhite(-0.5,0.5),\rate,1.2);
+~ring1 = Pbind(\instrument,\ring1,\f,Pkey(\freq),\scale,d[\scale],\root,Pkr(~r),\degree,0,\octave,Pwrand([3,4],[10,1].normalizeSum,inf),\dur,0.5,\d,0.4,\a,Pexprand(1,20),\pan,0,\amp,0.5);
+)
+116.886461663       s.makeWindow
+396.942440361       My name is coï¿¥ï¾¡pt
+635.254556028       My name is coï¿¥ï¾¡pt
+635.363970974       ~t2 = Pbind(\instrument,\bplay,\buf,d["t"][0],\dur,Pbjorklund2(5,16,inf,Pwhite(0,6).asStream)/4,\amp,1,\pan,Pwhite(-0.5,0.5),\rate,1.2);
+654.176673334       ~t2 = Pbind(\instrument,\bplay,\buf,d["t"][0],\dur,Pbjorklund2(5,16,inf,Pwhite(0,6).asStream)/4,\amp,1,\pan,Pwhite(-0.5,0.5),\rate,1.2);
+656.506350323       ~t1 = Pbind(\instrument,\bplay,\buf,d["t"][0],\dur,Pbjorklund2(5,16,inf,Pwhite(0,0).asStream)/4,\amp,1,\pan,Pwhite(-0.5,0.5));
+657.392281202       l = Pbjorklund2(Pwhite(1,10),16)/4;
+659.733782202       ~t1.play
+662.655258874       ~t2.play
+669.245988181       ~sn = Pbind(\instrument,\bplay,\buf,d["s"][0],\dur,2,\amp,1);
+704.737070278       ~sn.play
+706.996821105       ~k = Pbind(\instrument,\bplay,\buf,d["k"][0],\dur,Pbjorklund2(3,8)/4,\amp,1);
+716.5894898       ~k = Pbind(\instrument,\bplay,\buf,d["k"][2],\dur,Pbjorklund2(3,8)/4,\amp,1);
+723.285407262       ~k.play
+725.009386608       ~k = Pbind(\instrument,\bplay,\buf,d["k"][2],\dur,Pbjorklund2(3,8)/4,\amp,1,\rate,Pseq([1.3,1.5],inf));
+740.994301271       ~ring2 = Pbind(\instrument,\ring1,\f,Pkey(\freq),\scale,d[\scale],\root,Pkr(~r),\degree,Pwhite(-2,2),\octave,Pwrand([4,5],[10,1].normalizeSum,inf),\dur,l,\d,0.6,\a,1,\pan,0,\amp,0.5);
+745.630922551       ~ring2.play
+750.180428089       ~ring2 = Pbind(\instrument,\ring1,\f,Pkey(\freq),\scale,d[\scale],\root,Pkr(~r),\degree,Pwhite(-2,2),\octave,Pwrand([4,5],[10,1].normalizeSum,inf),\dur,l,\d,0.6,\a,1,\pan,0,\amp,0.5);
+755.143438213       ~ring1 = Pbind(\instrument,\ring1,\f,Pkey(\freq),\scale,d[\scale],\root,Pkr(~r),\degree,0,\octave,Pwrand([3,4],[10,1].normalizeSum,inf),\dur,0.5,\d,0.4,\a,Pexprand(1,20),\pan,0,\amp,0.5);
+758.501290229       ~ring1.play
+763.866870548       ~shep.stop(120)
+771.954570737       ~t3 = Pbind(\instrument,\bplay,\buf,d["t"][0],\dur,Pbjorklund2(5,16,inf,Pwhite(0,6).asStream)/4,\amp,1,\pan,Pwhite(-0.5,0.5),\rate,1.5);
+790.795620074       ~t4 = Pbind(\instrument,\bplay,\buf,d["t"][0],\dur,Pbjorklund2(5,16,inf,Pwhite(0,6).asStream)/4,\amp,1,\pan,Pwhite(-0.5,0.5),\rate,1.8);
+800.44240173       ~t3.play
+807.290415969       ~t4.play
+809.081245444       ~c = Pbind(\instrument,\bplay,\buf,d["c"][0],\dur,0.75,\amp,1);
+818.328201126       ~c.play
+820.45967343       ~shep.stop
+828.442931498       ~shep.clear
+832.490129591       p.clock.tempo 
+839.111133188       p.clock.tempo =1.02
+842.085081946       p.clock.tempo =1.04
+843.0642061       p.clock.tempo =1.07
+844.36274183       p.clock.tempo =1.08
+846.098411792       p.clock.tempo =1.1
+847.548784069       p.clock.tempo =1.12
+848.193885989       p.clock.tempo =1.14
+849.013001286       p.clock.tempo =1.16
+850.439531798       p.clock.tempo =1.18
+851.68961992       p.clock.tempo =1.2
+853.155577411       p.clock.tempo =1.21
+855.794944703       p.clock.tempo =1.22
+856.515511337       p.clock.tempo =1.23
+857.582883866       p.clock.tempo =1.24
+858.301192491       p.clock.tempo =1.25
+858.992612447       ~ring2 = Pbind(\instrument,\ring1,\f,Pkey(\freq),\scale,d[\scale],\root,Pkr(~r),\degree,Pwhite(-2,2),\octave,Pwrand([4,5],[10,1].normalizeSum,inf),\dur,l,\d,0.6,\a,1,\pan,0,\amp,1);
+865.292789423       ~ring1 = Pbind(\instrument,\ring1,\f,Pkey(\freq),\scale,d[\scale],\root,Pkr(~r),\degree,0,\octave,Pwrand([3,4],[10,1].normalizeSum,inf),\dur,0.5,\d,0.4,\a,Pexprand(1,20),\pan,0,\amp,1);
+871.251507564       ~ring2 = Pbind(\instrument,\ring1,\f,Pkey(\freq),\scale,d[\scale],\root,Pkr(~r),\degree,Pwhite(-2,2),\octave,Pwrand([4,5],[10,1].normalizeSum,inf),\dur,l,\d,0.6,\a,Pexprand(2,200),\pan,0,\amp,1);
+897.218161874       ~ring1 = Pbind(\instrument,\ring1,\f,Pkey(\freq),\scale,d[\scale],\root,Pkr(~r),\degree,0,\octave,Pwrand([3,4],[10,1].normalizeSum,inf),\dur,0.5,\d,0.4,\a,Pexprand(1,200),\pan,0,\amp,1);
+900.281026073       ~ring3 = Pbind(\instrument,\ring1,\f,Pkey(\freq),\scale,d[\scale],\root,Pkr(~r),\degree,Pwhite(-2,2),\octave,Pwrand([5,6],[10,1].normalizeSum,inf),\dur,l,\d,0.6,\a,Pexprand(2,200),\pan,0,\amp,1);
+920.433258777       ~ring3.play
+925.057896254       ~k.stop
+927.681543571       ~c.stop
+930.801754722       ~ring3 = Pbind(\instrument,\ring1,\f,Pkey(\freq),\scale,d[\scale],\root,Pkr(~r),\degree,Pwhite(-2,2),\octave,Pwrand([5,6],[10,1].normalizeSum,inf),\dur,l,\d,0.34,\a,Pexprand(2,200),\pan,0,\amp,1);
+943.239429052       ~ring2 = Pbind(\instrument,\ring1,\f,Pkey(\freq),\scale,d[\scale],\root,Pkr(~r),\degree,Pwhite(-2,2),\octave,Pwrand([4,5],[10,1].normalizeSum,inf),\dur,l,\d,0.34,\a,Pexprand(2,200),\pan,0,\amp,1);
+945.404762814       ~ring1 = Pbind(\instrument,\ring1,\f,Pkey(\freq),\scale,d[\scale],\root,Pkr(~r),\degree,0,\octave,Pwrand([3,4],[10,1].normalizeSum,inf),\dur,0.5,\d,0.34,\a,Pexprand(1,200),\pan,0,\amp,1);
+948.753580147       (
+~t1.stop;
+~t2.stop;
+~t3.stop;
+~t4.stop;
+)
+963.584949667       ~sn.stop
+975.35147975       p.clock.tempo
+980.39252011       p.clock.tempo = 0.0001
+982.979854292       p.clock.tempo = 1.5
+989.120446768       p.clock.tempo = 1.55
+993.865601162       p.clock.tempo = 1.57
+994.931793742       p.clock.tempo = 1.59
+995.748712033       p.clock.tempo = 1.6
+997.639615768       p.clock.tempo = 1.62
+999.308583314       p.clock.tempo = 1.64
+1000.554998288       p.clock.tempo = 1.67
+1002.370469365       p.clock.tempo = 1.7
+1004.095184191       p.clock.tempo = 1.74
+1007.460598073       p.clock.tempo = 1.8
+1009.440080584       p.clock.tempo = 1.82
+1010.755791564       p.clock.tempo = 1.84
+1011.469696742       p.clock.tempo = 1.87
+1015.00629488       p.clock.tempo = 1.9
+1016.33311894       p.clock.tempo = 1.94
+1017.393790368       p.clock.tempo = 1.98
+1018.888146406       p.clock.tempo = 2
+1020.155444028       p.clock.tempo = 2.1
+1022.946887505       ~c = Pbind(\instrument,\bplay,\buf,d["c"][0],\dur,0.75,\amp,1);
+1027.489365255       ~c.play
+1033.093495166       ~c2 = Pbind(\instrument,\bplay,\buf,d["c"][0],\dur,Pbjorklund2(Pseq([3,3,3,4],inf),8)/4,\amp,1);
+1065.083549307       ~c2.play
+1067.83260055       ~c2 = Pbind(\instrument,\bplay,\buf,d["c"][0],\dur,Pbjorklund2(Pseq([3,3,3,4],inf),8)/4,\amp,1,\rate,1.2);
+1072.418242948       p.clock.tempo
+1080.470067998       p.clock.tempo = 2.11
+1084.044958328       p.clock.tempo = 2.12
+1084.606084715       p.clock.tempo = 2.14
+1085.442504584       p.clock.tempo = 2.14
+1085.593829313       p.clock.tempo = 2.18
+1086.985434951       p.clock.tempo = 2.19
+1088.353128144       p.clock.tempo = 2.2
+1089.292698727       ~k = Pbind(\instrument,\bplay,\buf,d["k"][0],\dur,1,\amp,1);
+1093.262773924       ~oh = Pbind(\instrument,\bplay,\buf,d["oh"][1],\dur,Pseq([0.5,Pseq([1],inf)],inf),\amp,1);
+1101.710772751       ~oh.play
+1105.411390425       ~oh = Pbind(\instrument,\bplay,\buf,d["oh"][1],\dur,Pseq([0.5,Pseq([1],inf)],inf),\amp,2);
+1112.044070771       ~t4.play
+1120.403478431       ~t3.play
+1123.189938685       ~t2.play
+1123.884809319       ~t1.play
+1125.059289297       ~k = Pbind(\instrument,\bplay,\buf,d["k"][0],\dur,1,\amp,2);
+1134.987020415       (
+~ring1.stop;
+~ring2.stop;
+~ring3.stop;
+~k.stop;
+)
+1154.149305552       (
+~ring1.play;
+~ring2.play;
+~ring3.play;
+~k.play;
+)
+1178.257842839       ~sn.play
+1191.554343963       ~sn = Pbind(\instrument,\bplay,\buf,d["s"][0],\dur,2,\amp,4);
+1203.784949658       ~oh = Pbind(\instrument,\bplay,\buf,d["shout"][0],\dur,Pseq([0.5,Pseq([1],inf)],inf)*2,\amp,0.5);
+1221.487377944       ~oh.play
+1225.906398225       ~oh = Pbind(\instrument,\bplay,\buf,d["shout"][0],\dur,Pseq([0.5,Pseq([1],inf)],inf)*2,\amp,1);
+1232.058120944       ~h = Pbind(\instrument,\bplay,\buf,d["ch"][0],\dur,0.25,\amp,Pwhite(0.2,1));
+1273.538608679       ~h.play
+1277.114970408       ~h = Pbind(\instrument,\bplay,\buf,d["ch"][0],\dur,0.25,\amp,Pwhite(0.2,3));
+1280.136685172       ~t4 = Pbind(\instrument,\bplay,\buf,d["t"][0],\dur,Pbjorklund2(5,16,inf,Pwhite(0,6).asStream)/4,\amp,1,\pan,Pwhite(-0.5,0.5),\rate,5);
+1290.981546778       ~t3 = Pbind(\instrument,\bplay,\buf,d["t"][0],\dur,Pbjorklund2(5,16,inf,Pwhite(0,6).asStream)/4,\amp,1,\pan,Pwhite(-0.5,0.5),\rate,6);
+1295.917719532       ~t2 = Pbind(\instrument,\bplay,\buf,d["t"][0],\dur,Pbjorklund2(5,16,inf,Pwhite(0,6).asStream)/4,\amp,1,\pan,Pwhite(-0.5,0.5),\rate,87);
+1298.562931704       ~t2 = Pbind(\instrument,\bplay,\buf,d["t"][0],\dur,Pbjorklund2(5,16,inf,Pwhite(0,6).asStream)/4,\amp,1,\pan,Pwhite(-0.5,0.5),\rate,8);
+1299.368711043       l = Pbjorklund2(Pseq([3,6,12,11,10,8,1,5,3,1],inf),16)/4;
+1330.887026898       (
+l = Pbjorklund2(Pseq([3,6,12,11,10,8,1,5,3,1],inf),16)/4;
+~t1 = Pbind(\instrument,\bplay,\buf,d["t"][0],\dur,Pbjorklund2(5,16,inf,Pwhite(0,0).asStream)/4,\amp,1,\pan,Pwhite(-0.5,0.5));
+~t2 = Pbind(\instrument,\bplay,\buf,d["t"][0],\dur,Pbjorklund2(5,16,inf,Pwhite(0,6).asStream)/4,\amp,1,\pan,Pwhite(-0.5,0.5),\rate,8);
+~t3 = Pbind(\instrument,\bplay,\buf,d["t"][0],\dur,Pbjorklund2(5,16,inf,Pwhite(0,6).asStream)/4,\amp,1,\pan,Pwhite(-0.5,0.5),\rate,6);
+~t4 = Pbind(\instrument,\bplay,\buf,d["t"][0],\dur,Pbjorklund2(5,16,inf,Pwhite(0,6).asStream)/4,\amp,1,\pan,Pwhite(-0.5,0.5),\rate,5);
+~ring1 = Pbind(\instrument,\ring1,\f,Pkey(\freq),\scale,d[\scale],\root,Pkr(~r),\degree,0,\octave,Pwrand([3,4],[10,1].normalizeSum,inf),\dur,0.5,\d,0.34,\a,Pexprand(1,200),\pan,0,\amp,1);
+~ring2 = Pbind(\instrument,\ring1,\f,Pkey(\freq),\scale,d[\scale],\root,Pkr(~r),\degree,Pwhite(-2,2),\octave,Pwrand([4,5],[10,1].normalizeSum,inf),\dur,l,\d,0.34,\a,Pexprand(2,200),\pan,0,\amp,1);
+~ring3 = Pbind(\instrument,\ring1,\f,Pkey(\freq),\scale,d[\scale],\root,Pkr(~r),\degree,Pwhite(-2,2),\octave,Pwrand([5,6],[10,1].normalizeSum,inf),\dur,l,\d,0.34,\a,Pexprand(2,200),\pan,0,\amp,1);
+~sn = Pbind(\instrument,\bplay,\buf,d["s"][0],\dur,l,\amp,4);
+~k = Pbind(\instrument,\bplay,\buf,d["k"][2],\dur,Pbjorklund2(3,8)/4,\amp,1,\rate,Pseq([1.3,1.5],inf));
+~oh = Pbind(\instrument,\bplay,\buf,d["shout"][0],\dur,Pseq([0.5,Pseq([1],inf)],inf)*2,\amp,1);
+~h = Pbind(\instrument,\bplay,\buf,d["ch"][0],\dur,0.25,\amp,Pwhite(0.2,3));
+)
+1349.906104448       ~k.stop
+1359.960208902       ~sn.stop
+1361.556482443       ~h.stop
+1373.8533675       (
+l = Pbjorklund2(Pseq([3,6,12,11,10,8,1,5,3,1],inf),16)/4;
+~t1 = Pbind(\instrument,\bplay,\buf,d["t"][0],\dur,Pbjorklund2(5,16,inf,Pwhite(0,0).asStream)/4,\amp,1,\pan,Pwhite(-0.5,0.5));
+~t2 = Pbind(\instrument,\bplay,\buf,d["t"][0],\dur,Pbjorklund2(5,16,inf,Pwhite(0,6).asStream)/4,\amp,1,\pan,Pwhite(-0.5,0.5),\rate,8);
+~t3 = Pbind(\instrument,\bplay,\buf,d["t"][0],\dur,Pbjorklund2(5,16,inf,Pwhite(0,6).asStream)/4,\amp,1,\pan,Pwhite(-0.5,0.5),\rate,6);
+~t4 = Pbind(\instrument,\bplay,\buf,d["t"][0],\dur,Pbjorklund2(5,16,inf,Pwhite(0,6).asStream)/4,\amp,1,\pan,Pwhite(-0.5,0.5),\rate,5);
+~ring1 = Pbind(\instrument,\ring1,\f,Pkey(\freq),\scale,d[\scale],\root,Pkr(~r),\degree,0,\octave,Pwrand([3,4],[10,1].normalizeSum,inf),\dur,0.5,\d,0.34,\a,Pexprand(1,200),\pan,0,\amp,1);
+~ring2 = Pbind(\instrument,\ring1,\f,Pkey(\freq),\scale,d[\scale],\root,Pkr(~r),\degree,Pwhite(-2,2),\octave,Pwrand([4,5],[10,1].normalizeSum,inf),\dur,l,\d,0.34,\a,Pexprand(2,200),\pan,0,\amp,1);
+~ring3 = Pbind(\instrument,\ring1,\f,Pkey(\freq),\scale,d[\scale],\root,Pkr(~r),\degree,Pwhite(-2,2),\octave,Pwrand([5,6],[10,1].normalizeSum,inf),\dur,l,\d,0.34,\a,Pexprand(2,200),\pan,0,\amp,1);
+~sn = Pbind(\instrument,\bplay,\buf,d["s"][0],\dur,l,\amp,4);
+~k = Pbind(\instrument,\bplay,\buf,d["k"][2],\dur,Pbjorklund2(3,8)/4,\amp,1,\rate,Pseq([1.3,1.5],inf));
+~oh = Pbind(\instrument,\bplay,\buf,d["shout"][0],\dur,Pseq([0.5,Pseq([1],inf)],inf)*2,\amp,1);
+~h = Pbind(\instrument,\bplay,\buf,d["ch"][0],\dur,0.25,\amp,Pwhite(0.2,3));
+)
+1376.118085134       ~c.stop
+1383.058621485       ~c2.stop
+1384.348565268       ~t1.stop
+1388.0796725       ~t2 = Pbind(\instrument,\bplay,\buf,d["t"][0],\dur,l,\amp,1,\pan,Pwhite(-0.5,0.5),\rate,8);
+1397.847277815       ~t1 = Pbind(\instrument,\bplay,\buf,d["t"][0],\dur,l,\amp,1,\pan,Pwhite(-0.5,0.5));
+1404.809656462       ~t3 = Pbind(\instrument,\bplay,\buf,d["t"][0],\dur,l,\amp,1,\pan,Pwhite(-0.5,0.5),\rate,6);
+1413.447731882       (
+l = Pbjorklund2(Pseq([3,6,12,11,10,8,1,5,3,1],inf),16)/4;
+~t1 = Pbind(\instrument,\bplay,\buf,d["t"][0],\dur,l,\amp,1,\pan,Pwhite(-0.5,0.5));
+~t2 = Pbind(\instrument,\bplay,\buf,d["t"][0],\dur,l,\amp,1,\pan,Pwhite(-0.5,0.5),\rate,8);
+~t3 = Pbind(\instrument,\bplay,\buf,d["t"][0],\dur,l,\amp,1,\pan,Pwhite(-0.5,0.5),\rate,6);
+~t4 = Pbind(\instrument,\bplay,\buf,d["t"][0],\dur,l,\amp,1,\pan,Pwhite(-0.5,0.5),\rate,5);
+~ring1 = Pbind(\instrument,\ring1,\f,Pkey(\freq),\scale,d[\scale],\root,Pkr(~r),\degree,0,\octave,Pwrand([3,4],[10,1].normalizeSum,inf),\dur,0.5,\d,0.34,\a,Pexprand(1,200),\pan,0,\amp,1);
+~ring2 = Pbind(\instrument,\ring1,\f,Pkey(\freq),\scale,d[\scale],\root,Pkr(~r),\degree,Pwhite(-2,2),\octave,Pwrand([4,5],[10,1].normalizeSum,inf),\dur,l,\d,0.34,\a,Pexprand(2,200),\pan,0,\amp,1);
+~ring3 = Pbind(\instrument,\ring1,\f,Pkey(\freq),\scale,d[\scale],\root,Pkr(~r),\degree,Pwhite(-2,2),\octave,Pwrand([5,6],[10,1].normalizeSum,inf),\dur,l,\d,0.34,\a,Pexprand(2,200),\pan,0,\amp,1);
+~sn = Pbind(\instrument,\bplay,\buf,d["s"][0],\dur,l,\amp,4);
+~k = Pbind(\instrument,\bplay,\buf,d["k"][2],\dur,Pbjorklund2(3,8)/4,\amp,1,\rate,Pseq([1.3,1.5],inf));
+~oh = Pbind(\instrument,\bplay,\buf,d["shout"][0],\dur,Pseq([0.5,Pseq([1],inf)],inf)*2,\amp,1);
+~h = Pbind(\instrument,\bplay,\buf,d["ch"][0],\dur,0.25,\amp,Pwhite(0.2,3));
+)
+1421.804749985       l = Pbjorklund2(Pseq([3,6,12,11,10,8,1,5,3,1],inf),16)/4;
+1437.468474899       (
+l = Pbjorklund2(Pseq([3,6,12,11,10,8,1,5,3,1],inf),16)/4;
+~t1 = Pbind(\instrument,\bplay,\buf,d["t"][0],\dur,l,\amp,1,\pan,Pwhite(-0.5,0.5));
+~t2 = Pbind(\instrument,\bplay,\buf,d["t"][0],\dur,l,\amp,1,\pan,Pwhite(-0.5,0.5),\rate,8);
+~t3 = Pbind(\instrument,\bplay,\buf,d["t"][0],\dur,l,\amp,1,\pan,Pwhite(-0.5,0.5),\rate,6);
+~t4 = Pbind(\instrument,\bplay,\buf,d["t"][0],\dur,l,\amp,1,\pan,Pwhite(-0.5,0.5),\rate,5);
+~ring1 = Pbind(\instrument,\ring1,\f,Pkey(\freq),\scale,d[\scale],\root,Pkr(~r),\degree,0,\octave,Pwrand([3,4],[10,1].normalizeSum,inf),\dur,0.5,\d,0.34,\a,Pexprand(1,200),\pan,0,\amp,1);
+~ring2 = Pbind(\instrument,\ring1,\f,Pkey(\freq),\scale,d[\scale],\root,Pkr(~r),\degree,Pwhite(-2,2),\octave,Pwrand([4,5],[10,1].normalizeSum,inf),\dur,l,\d,0.34,\a,Pexprand(2,200),\pan,0,\amp,1);
+~ring3 = Pbind(\instrument,\ring1,\f,Pkey(\freq),\scale,d[\scale],\root,Pkr(~r),\degree,Pwhite(-2,2),\octave,Pwrand([5,6],[10,1].normalizeSum,inf),\dur,l,\d,0.34,\a,Pexprand(2,200),\pan,0,\amp,1);
+~sn = Pbind(\instrument,\bplay,\buf,d["s"][0],\dur,l,\amp,4);
+~k = Pbind(\instrument,\bplay,\buf,d["k"][2],\dur,Pbjorklund2(3,8)/4,\amp,1,\rate,Pseq([1.3,1.5],inf));
+~oh = Pbind(\instrument,\bplay,\buf,d["shout"][0],\dur,Pseq([0.5,Pseq([1],inf)],inf)*2,\amp,1);
+~h = Pbind(\instrument,\bplay,\buf,d["ch"][0],\dur,0.25,\amp,Pwhite(0.2,3));
+)
+1438.652597853       ~ring1.stop
+1448.439705184       ~oh = Pbind(\instrument,\bplay,\buf,d["shout"][0],\dur,Pseq([0.5,Pseq([1],inf)],inf)*2,\amp,2);
+1456.747652154       ~oh = Pbind(\instrument,\bplay,\buf,d["shout"][0],\dur,Pseq([0.5,Pseq([1],inf)],inf)*2,\amp,4);
+1470.945689734       ~k = Pbind(\instrument,\bplay,\buf,d["k"][0],\dur,Pbjorklund2(3,8)/4,\amp,1);
+1488.241668156       ~k.play
+1491.831161659       ~sn = Pbind(\instrument,\bplay,\buf,d["s"][0],\dur,2,\amp,5);
+1504.908684886       ~sn.play
+1509.40366182       p.clock.tempo 
+1516.866451881       p.clock.tempo = 2.21
+1520.29132961       p.clock.tempo = 2.22
+1520.751493128       p.clock.tempo = 2.24
+1521.385672739       p.clock.tempo = 2.25
+1522.097474699       p.clock.tempo = 2.26
+1522.801704392       p.clock.tempo = 2.28
+1523.635838371       p.clock.tempo = 2.29
+1525.058639975       p.clock.tempo = 2.3
+1525.767495088       ~ring1.stop
+1529.899421564       ~ring2.stop
+1555.942684059       ~ring.stop
+1556.290396147       ~ring3.stop
+1557.734944683       ~t3 = Pbind(\instrument,\bplay,\buf,d["t"][0],\dur,l,\amp,1,\pan,Pwhite(-0.5,0.5),\rate,6);
+1566.956906798       ~t4 = Pbind(\instrument,\bplay,\buf,d["t"][0],\dur,l,\amp,1,\pan,Pwhite(-0.5,0.5),\rate,5);
+1568.206111282       ~t2 = Pbind(\instrument,\bplay,\buf,d["t"][0],\dur,l,\amp,1,\pan,Pwhite(-0.5,0.5),\rate,8);
+1570.03773835       ~t1 = Pbind(\instrument,\bplay,\buf,d["t"][0],\dur,l,\amp,1,\pan,Pwhite(-0.5,0.5));
+1571.216813933       ~oh.stop
+1583.812216057       ~k.stop
+1587.196294849       ~t1.stop
+1592.017393604       ~t2.stop
+1593.493388097       ~t3.stop
+1594.534206915       ~t4.stop
+1595.995117113       ~sinfb = Pbind(\instrument,\sinfb,\scale,Scale.minor,\root,Pkr(~r),\octave,4,\degree,Pseq([0,0,4,5],inf),\dur,0.25,\amp,0.3,\fb,Pwhite(1,1.4),\rel,0.3);
+1618.578667829       ~sinfb.play
+1621.713358442       ~sinfb = Pbind(\instrument,\sinfb,\scale,Scale.minor,\root,Pkr(~r),\octave,4,\degree,Pseq([0,0,4,5],inf),\dur,Pbjorklund2(3,8)/4,\amp,0.3,\fb,Pwhite(1,1.4),\rel,0.3);
+1637.854548312       ~sinfb = Pbind(\instrument,\sinfb,\scale,Scale.minor,\root,Pkr(~r),\octave,4,\degree,Pseq([0,0,4,5],inf),\dur,0.25,\amp,0.3,\fb,Pwhite(1,1.4),\rel,0.3);
+1639.88648129       ~sinfb2 = Pbind(\instrument,\sinfb,\scale,Scale.minor,\root,Pkr(~r),\octave,4,\degree,Pseq([0,0,4,5],inf),\dur,Pbjorklund2(3,8)/4,\amp,0.3,\fb,Pwhite(1,1.4),\rel,0.3);
+1644.470643506       ~sinfb2.play
+1650.453391518       ~sinfb = Pbind(\instrument,\sinfb,\scale,Scale.minor,\root,Pkr(~r),\octave,5,\degree,Pseq([0,0,4,5],inf),\dur,0.25,\amp,0.3,\fb,Pwhite(1,1.4),\rel,0.3);
+1659.787597705       ~sn.stop
+1662.293159143       ~sinfb = Pbind(\instrument,\sinfb,\scale,Scale.minor,\root,Pkr(~r),\octave,5,\degree,Pseq([0,0,4,5],inf),\dur,0.25,\amp,0.3,\fb,Pwhite(1,1.4),\rel,0.1);
+1672.457221595       ~sinfb = Pbind(\instrument,\sinfb,\scale,Scale.minor,\root,Pkr(~r),\octave,6,\degree,Pseq([0,0,4,5],inf),\dur,0.25,\amp,0.3,\fb,Pwhite(1,1.4),\rel,0.1);
+1678.94550013       ~sinfb2 = Pbind(\instrument,\sinfb,\scale,Scale.minor,\root,Pkr(~r),\octave,[4,5],\degree,Pseq([0,0,4,5],inf),\dur,Pbjorklund2(3,8)/4,\amp,0.3,\fb,Pwhite(1,1.4),\rel,0.3);
+1688.246012691       ~oh = Pbind(\instrument,\bplay,\buf,d["oh"][1],\dur,Pseq([0.5,Pseq([1],inf)],inf),\amp,1);
+1695.307357174       ~oh = Pbind(\instrument,\bplay,\buf,d["oh"][1],\dur,Pseq([0.5,Pseq([1],inf)],inf),\amp,2);
+1697.931929674       ~k = Pbind(\instrument,\bplay,\buf,d["k"][0],\dur,1,\amp,2);
+1702.897888424       ~sinfbx = Pbind(\instrument,\sinfb,\scale,Scale.minor,\root,Pkr(~r),\octave,6,\degree,Pseq([0,0,4,5,0,0,4,5,6],inf),\dur,0.25,\amp,0.3,\fb,Pwhite(1,1.4),\rel,0.1);
+1720.482865257       ~sinfbx.play
+1726.241903466       ~sinfbroot = Pbind(\instrument,\sinfb,\scale,Scale.minor,\root,Pkr(~r),\octave,[3,4],\degree,0,\dur,0.25,\amp,0.3,\fb,Pwhite(1,1.4),\rel,0.1);
+1753.934515763       ~sinfbroot = Pbind(\instrument,\sinfb,\scale,Scale.minor,\root,Pkr(~r),\octave,[3,4],\degree,0,\dur,0.5,\amp,Pwhite(0.1,0.3),\fb,Pwhite(1,1.4),\rel,1);
+1775.885070213       ~sinfbroot.play
+1777.437073172       ~sinfbroot = Pbind(\instrument,\sinfb,\scale,Scale.minor,\root,Pkr(~r),\octave,[3,4],\degree,0,\dur,1,\amp,Pwhite(0.1,0.3),\fb,Pwhite(1,1.4),\rel,1);
+1785.704634422       p.clock.tempo
+1803.08178864       p.clock.tempo = 1.15
+1806.955733955       ~h = Pbind(\instrument,\bplay,\buf,d["ch"][0],\dur,Pwrand([0.25,Pseq([0.125],2)],[10,5].normalizeSum,inf),\amp,Pwhite(0.2,1));
+1832.534828426       ~h.play
+1835.54843475       ~h = Pbind(\instrument,\bplay,\buf,d["ch"][0],\dur,Pwrand([0.25,Pseq([0.125],2),Pseq([0.125/2],4)],[10,5,2].normalizeSum,inf),\amp,Pwhite(0.2,1));
+1854.96674854       ~shout = Pbind(\instrument,\bplay,\buf,d["shout"][0],\dur,Pseq([0.5,Pseq([1],inf)],inf),\amp,1);
+1870.360667794       ~shout.play
+1874.433138389       ~shout = Pbind(\instrument,\bplay,\buf,d["shout"][0],\dur,Pseq([0.5,Pseq([1],inf)],inf),\amp,2)
+1879.983827203       ~shout = Pbind(\instrument,\bplay,\buf,d["shout"][0],\dur,Pseq([0.5,Pseq([1],inf)],inf),\amp,3)
+1881.45420578       ~shout = Pbind(\instrument,\bplay,\buf,d["shout"][0],\dur,Pseq([0.5,Pseq([1],inf)],inf),\amp,4)
+1882.287582218       p.clock.tempo = 1
+1894.633005483       p.clock.tempo = 0.75
+1896.736243841       p.clock.tempo = 0.73
+1897.492037866       p.clock.tempo = 0.7
+1898.848509316       p.clock.tempo = 0.6
+1901.565928808       p.clock.tempo = 0.5
+1903.101704922       p.clock.tempo = 0.4
+1904.632945885       p.clock.tempo = 0.2
+1905.84598249       p.clock.tempo = 0.2
+1906.910847877       (
+p.clock.tempo = 2.3
+~k.play;
+~oh.play;
+)
+1928.557069352       (
+p.clock.tempo = 2.3;
+~k.play;
+~oh.play;
+)
+1933.031166256       ~shout.stop
+1949.252488549       ~sinfbx = Pbind(\instrument,\sinfb,\scale,Scale.minor,\root,Pkr(~r),\octave,6,\degree,Pseq([0,0,4,5,0,0,4,5,6],inf),\dur,0.25,\amp,0.3,\fb,Pwhite(1,1.4),\rel,0.05);
+1961.207497927       ~r2 = {70}
+1985.412096804       ~freqfb.play
+1990.25508635       ~sinfb1.stop(40)
+1994.135973792       ~sinfb2.stop(40)
+2000.015695356       ~sinfb3.stop(40)
+2000.516344018       ~sinfb.stop(40)
+2002.013774436       ~k = Pbind(\instrument,\bplay,\buf,d["k"][0],\dur,Pbjorklund2(3,8)/4,\amp,1,\rate,Pseq([1.4,1.5],inf));
+2022.36421043       ~sn.stop
+2032.395280632       ~c.stop
+2035.648975548       ~c2.stop
+2037.197054872       ~oh.stop
+2046.443868024       ~k = Pbind(\instrument,\bplay,\buf,d["k"][0],\dur,Pbjorklund2(3,8)/4,\amp,0.5,\rate,Pseq([1.4,1.5],inf));
+2050.202828992       ~k = Pbind(\instrument,\bplay,\buf,d["k"][0],\dur,Pbjorklund2(3,8)/4,\amp,0.3,\rate,Pseq([1.4,1.5],inf));
+2056.181087038       ~sinfbbass.stop(10)
+2063.886670396       ~sinfbx.stop(10)
+2074.910988174       ~k.stop
+2086.048215997       ~h.stop
+2093.501084192       ~freqfb = Pbind(\instrument,\sinfb,\freq,Pseq([1,2,3,4,5],inf)*Pkr(~r2),\dur,0.25,\amp,1,\fb,0.1,\rel,0.3);
+2101.287950159       ~freqfb = Pbind(\instrument,\sinfb,\freq,Pseq([1,2,3,4,5],inf)*Pkr(~r2),\dur,0.25,\amp,0.7,\fb,0.1,\rel,0.3);
+2107.587498597       ~freqfb = Pbind(\instrument,\sinfb,\freq,Pseq([1,2,3,4,5,6,7,8],inf)*Pkr(~r2),\dur,0.25,\amp,0.7,\fb,0.1,\rel,0.3);
+2111.047279442       ~sinfbroot.stop
+2119.139692053       ~freqfb2 = Pbind(\instrument,\sinfb,\freq,Pseq([1,2,3,4,5,6,7,8].reverse,inf)*Pkr(~r2),\dur,0.25,\amp,0.7,\fb,0.1,\rel,0.3);
+2135.338573117       ~freqfb2.play
+2139.941121465       ~freqfb2 = Pbind(\instrument,\sinfb,\freq,Pseq([1,2,3,4,5,6,7,8].reverse,inf)*Pkr(~r2),\dur,0.25,\amp,0.7,\fb,0.1,\rel,0.2);
+2143.281948968       ~freqfb = Pbind(\instrument,\sinfb,\freq,Pseq([1,2,3,4,5,6,7,8],inf)*Pkr(~r2),\dur,0.25,\amp,0.7,\fb,0.1,\rel,0.1);
+2147.296528611       ~freqfb2 = Pbind(\instrument,\sinfb,\freq,Pseq([1,2,3,4,5,6,7,8].reverse,inf)*Pkr(~r2),\dur,0.25,\amp,0.7,\fb,0.1,\rel,0.1);
+2149.235921285       ~freqfb2 = Pbind(\instrument,\sinfb,\freq,Pseq([1,2,3,4,5,6,7,8].reverse,inf)*Pkr(~r2),\dur,0.25,\amp,0.7,\fb,Pwhite(0.1,0.9),\rel,0.1);
+2163.690230631       ~freqfb = Pbind(\instrument,\sinfb,\freq,Pseq([1,2,3,4,5,6,7,8],inf)*Pkr(~r2),\dur,0.25,\amp,0.7,\fb,Pwhite(0.1,0.9),\rel,0.1);
+2169.588317264       ~r2 = {Line.kr(74,100,10)}
+2186.991934277       ~c = Pbind(\instrument,\bplay,\buf,d["c"][0],\dur,0.75,\amp,1);
+2193.863466742       ~r2 = {Line.kr(100,200,10)}
+2217.982890022       ~c = Pbind(\instrument,\bplay,\buf,d["c"][0],\dur,0.75,\amp,1);
+2221.706798979       ~c = Pbind(\instrument,\bplay,\buf,d["c"][0],\dur,Pbjorklund2(Pseq([3,3,3,4],inf),8)/4,\rate,1.5,\amp,1);
+2223.487122825       ~c = Pbind(\instrument,\bplay,\buf,d["c"][0],\dur,0.75,\amp,1);
+2225.936093677       ~cx = Pbind(\instrument,\bplay,\buf,d["c"][0],\dur,Pbjorklund2(Pseq([3,3,3,4],inf),8)/4,\rate,1.5,\amp,1);
+2228.451266696       ~r2 
