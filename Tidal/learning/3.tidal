@@ -1,0 +1,165 @@
+
+808 808bd 808cy
+808hc 808ht 808lc 808lt
+808mc 808mt 808oh
+808sd
+
+
+cps 1.5
+
+
+
+d2 $ rarely (jux (iter 4)) $ slow 2 $ sound "808bd:4*2"
+
+d3 $ rarely (fast 1.5) $ sound $ samples "[perc, 808 [808 808 perc]]" (irand (15))
+
+d4 $ up "[-12, [0 1 2 3 4 5 6 7 8 9]]" # sound "hoover:3" # cut "1"
+
+d4 $ degrade $ sound "808oh:5*8" # speed "1.2"
+
+d8 $ degrade $ sometimes brak $ sound "808mt 808ht [808lt 808cy] 808sd"
+
+d3 $ sound "[808bd:2*2, [~ 808oh:0]*2]" #gain "1.2" # shape "0.9"
+
+d2 $ slow 2 $ jux (iter 2) $ sound "[cp?*8, sn bd(3,8)]"
+
+d2 $ sound "[bd*2, [~ hh]*2]"
+
+d9 $ slow 2 $ slow 8 $ sometimes (stut 8 0.25 0.125) $ up "0(3,8) 0(3,8) 3(3,8) 5(5,8)" # sound "knives" # gain "1" #cut "4"
+
+d9 silence
+
+d2 silence
+
+d4 $ slow 3 $ slow 2 $ jux rev $ up "0 1 2" # s "hoover"
+
+d1 $ slow 4 $ sometimes (slow 1.5) $ sometimes (striate 2) $ sound "adlib:5" # gain "1.2"
+
+d8 $ degrade $ sound $ samples "808*8" (irand(8))
+
+hush
+
+d1 $ slow 8 $ rarely rev $ rarely (jux (iter 4)) $ n "[[[a3, <c4 e4 g5>] [e4, <a5 a6 a7>]], [a5 b5 c5 d5 e5 f5 g5 a6]?*8]" # s "supersaw" # cutoff (slow 9 $ scale 200 2000 $ sine)
+
+d2 $ whenmod 8 4 (jux (iter 4)) $ sound "bd:3(3,8)"
+
+d7 $ sound "808bd:3*2"
+
+ d2 silence
+
+d4 $ slow 2 $ rarely (density 2) $ sound "cp [hh*2 perc] <hh*4 kicklinn> stomp"
+
+d5 $ slow 2 $ up "12 10 8 0 7 8 12 " # s "lbass:3"
+
+d5 $ sound "<tech:4*8 cp cp cp>"
+
+
+hush
+
+d6 $ slow 3 $ sometimes (slow 1.5) $ sound "adlib:8"
+
+
+cps 1.1
+
+d5 $ sometimes (chop 4) $ slow 4 $ sometimes (slow 3) $  sound "knives"
+
+hush
+
+hush
+
+hush
+
+d2 $ rarely (superimpose (iter 4)) $ sometimes rev $ sound "[808bd(3,8), 808oh:0*3, 808mt 808ht 808lt*2]"
+
+d3 $ up "0 3 4 5" # sound "lbass:1" # cut "1" # gain "0.8"
+
+d3 $ sound "[808bd:4, ~ 808:3?(3,8)]"
+
+d3 silence
+
+hush
+
+
+d2 $ whenmod 2 16 (density 2) $ rarely (iter 3) $ sound "hc*8"
+
+d4 $ sound "808bd:3(3,8)" # gain "1.1"
+
+d4 silence
+
+hush
+
+d2 $ slow 4 $ sound "808bd:2 ~ ~ ~ ~ ~ 808bd:2 ~ " # gain "1.2"
+
+hush
+
+
+d2 silence
+
+d6 $ slow 4 $ up "[[-11, -23], [0 0 <0(5,8) 0 0> -1], [12(3,8) ~ ~ ~], 12(3,8) 12(3,8) 12(3,8) 13(3,8)]" # sound "stab:4"
+
+
+d5 silence
+
+-- grime bass
+
+d1 $ rarely ((|+| coarse "4 7 5 9 10")) $ every 16 (density 2) $ stack[
+ slow 2 $ rarely (jux (0.125 ~>)) $
+ superimpose ((|*| speed "[2, 4,  0.5]"))
+ $ up "<0 [0 0 -4]>(<3 3 3 7>,8) [0 <0 0 [12, 24, 0]> 1 <1 1 1 7>]" # sound "bshot:2"
+ ]
+-- sometimes (jux (iter 4)) $ sound "bshot:10" # (slow 4 $ sometimesBy 0.25 (fast 2) $ speed "-1 1 2 1.5 -1.5")
+] # cutoff "19700"
+hush
+
+d2 $ stack [
+superimpose ((|*| speed 0.51)) $ slow 2 $ up "0(<1 2>,<8 1>) 2 3(<3 2>,8) 7(2,8)" # sound "synshot:18"
+]
+
+hush
+
+d3 $ sound "gabba*2"
+
+cps 1.2
+
+d3 $ stack [
+sound "bd:4*2",
+fast 2 $ every 8 (fast 4) $ sound "[808:1, <sn 808:3>]"
+]
+
+hush
+
+d3 $ fast 2 $ every 3 (fast 4) $ jux (iter 16) $ sound "[808:1*4, <sn 808sn:4?*2>]"
+
+hush
+
+d6 silence
+
+d6 $ stack [
+ striate 2 $ every 3 ((|+| speed "1.2")) $ rarely (striate 2) $ chop 4 $ sound "[adlib:2]",
+ (|+| speed "2") $ sound $ "adlib:7(3,8)"
+]
+
+d6 silence
+
+d5 $ slow 4 $ sometimes (slow 3) $ sound "adlib:5"
+
+d2 $ sometimes rev $ sound "808cy 808hc 808:4 [cp hh hh tok]" # gain "1.2"
+
+d5 $ jux (iter 4) $ superimpose (iter 8) $  sound "sn [cp:4 sn] 808sn 808mt"
+
+hush
+
+d7 $ stack [
+ slow 4 $ superimpose ((|*| speed "2")) $ rarely (jux rev) $ up "0(3,8) <0 12>(3,8) 7(3,8) 8(3,8)" # s "bshot:15" # cutoff (slow 5 $ scale 300 1000 $ sine),
+ slow 4 $ (|*| speed "4") $ rarely (jux rev) $ up "0(3,8) 0(3,8) 6(3,8) 7(3,8)" # s "bshot:13" # cutoff (slow 5 $ scale 300 1000 $ sine)
+ ]
+
+d4 $ jux (iter 4) $ sound "[bd*2, tok cp(3,8) [cp 808cy:5] tok*3]"
+
+hush
+
+d1 $ stack [
+jux (iter 4) $ rarely ((# speed "0.8")) $ sound "[808mt:1(3,8), ~ hh ~ hh]"
+]
+
+hush

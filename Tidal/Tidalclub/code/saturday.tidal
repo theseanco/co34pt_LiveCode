@@ -1,0 +1,330 @@
+d1 $ stack [
+jux (iter 8) $ sound "buchla*2",
+spin (2) $ sound "[~ 808 cp]*2" # speed "6"
+]
+
+cps 1.4
+
+d1 $ sound "bd bd*3 bd bd"
+
+is the same as:
+
+d1 $ sound "bd [bd bd bd]? bd bd"
+
+Don't forget your question marks:
+
+d1 $ sound "buchla*8?"
+
+d2 $ sound "[~ hh]*2"
+
+cps 1
+
+d3 $ almostNever (density 4) $ almostNever (density 2) $ spin (3) $ sound "repetition:4" # cut "1"
+
+d6 $ sound "gabba*3"
+
+
+hush
+
+d1 $ slow 2 $ sound "bd cp"
+
+"""
+slow has two inputs, one being a number and the other one being the pattern.
+
+:t slow
+
+a in a pattern description means it can be a pattern of anything.
+"""
+
+-- this also has functionally the same effect
+-- this speeds up the bass drum selectively but does not speed up the vowel pattern
+d1 $ sound (fast 2 "repetition:5(3,8)") # vowel (slow 4 "a e o i a e u") # cut "1"
+
+:t ($)
+
+-- The dollar sign denotes when a function argument stops?
+d1 $ fast 4 (sound (fast 2 "repetition:5(3,8)") # vowel (slow 4 "u i a e"))
+
+-- the file has a step by step guide of what the patterns are and how they function
+
+d1 $ (|+| speed (slow 19 "1 2 3 5 7")) $ fast (slow 5 "0.5 1 8 3 8 1 10") $ sound (samples "buchla" (irand 96))
+
+d2 $ sound "bd cp*2"
+
+d2 $ fast "<3 6 2>" $ sound "bd"
+
+-- you already know about subsequences []
+
+-- you already know about <>, but randomness
+
+d2 $ fast "<3 6 2>" $ sound "bd"
+
+-- Polyrhythm
+d2 $ sound "[bd sd bd, jx:50 jx:52 jx:56 jx:58]"
+
+-- Polymeter
+d2 $ sound "{bd sd bd, jx:50 jx:52 jx:56 jx:58}"
+
+-- the length of the overall cycle in a polymetric cycle is determined by the number of samples in the first set
+d4 $ sound "{arpy arpy:1 arpy:2 arpy:3 arpy:4, arpy arpy:1 arpy:2 arpy:3 arpy:4 arpy:5}"
+
+
+d4 $ sound "{arpy arpy:1 arpy:2 arpy:3 arpy:4, arpy arpy:1 arpy:2 arpy:3 arpy:4 arpy:5}%12"
+
+hush
+
+random numbers:
+
+You can use choose[2,3,4]
+
+d1 $ fast (discretise 1 $ choose [2,1,4]) $ sound "bd:4"
+
+-- discretise takes one random number per cycle, if given the argument 1
+--
+
+d1 $ fast "<2 1 4 8>" $ sound "buchla"
+  # room "100"
+
+d2 $ sound "cp" # speed "4"
+
+
+d4 $ rarely (slow 4) $ fast 2 $ sound "arpy arpy:1*2 arpy:3"
+  # lpf "1100 1500 8900"
+  # shape "0.99"
+  # crush "1"
+  # up "6 [9 10] 3"
+
+d5 $ sound "gabba*3"
+
+-- For composing patterns, look at the slide on composing patterns
+-- in essence, the number of steps in the first pattern absolutely dictates the overall structure of the resulting patterns
+
+d1 $ (n $ "3 5 2 1" + "10 20 30") # sound "jv"
+
+-- THE REASON WHY N NEEDS TO COME FIRST IS BECAUSE OF STRUCTURES
+
+-- this works
+d1 $ fast 2 $ n "40 50 70 90" # s "jvgabba"
+
+-- this doesn't, because the first pattern dicatates what is happening
+d1 $ s "jv" # n "40 50"
+
+-- if you wanted to structure the rhythm based on the effect, you can do this:
+
+d1 $ vowel "a e i(3,8) a*4 " # sound "buchla"
+
+-- and you can smash patterns into this too, so you can compose multiple samples by the vowels and so on.
+d1 $ vowel "a e i(3,8) a*4 " # sound "[[buchla, 808:3], ~ ~ jx:50]"
+
+d1 $ rarely (superimpose ( density 2)) $  vowel "[a e o]" # sound "xx:30"
+
+-- this sample is too long
+d1 $ sound "bev"
+
+-- this patterns the end
+d1 $ sound "bev*2"
+  # end "0.01 0.06"
+
+-- legato. the value that Legato gets is the how long the sample is comppared to the space it has
+d1 $ sound "bev(3,8)"
+  # legato "<1 2 5>"
+
+-- legato can also be used for rests
+d1 $ sound "bev ~"
+  # legato
+
+-- loopAt makes something fit a certain number of cycles
+d1 $ loopAt 2 $ sound "arc"
+
+d1 $ loopAt 2 $ sound "breaks175"
+
+-- the problem with loopAt is that it ends up looping a sample and you can't stop it
+-- use chop, then you can re-arrange it
+
+d1 $ every 5 (rev) $ loopAt 2 $ chop 8 $ sound "breaks165:2"
+
+d2 $ shuffle 4 $ loopAt 2 $ chop 32 $ sound "breaks165"
+
+d3 $ loopAt 3 $ chop 256 $ sound "repetition"
+
+cps 1.3
+
+-- the # is for taking two parameter patterns and combining them
+
+-- if you enclose a whole pattern in brackets it is easier to deal with
+-- DOLLARS ARE LIKE BRACKETS!
+
+d1 $ chop 16 $ loopAt 3 $ density 2 $ sound "bd"
+==
+d1 (chop 16 (loopAt 3 (density 2 (sound "bd"))))
+
+-- so it's kinda all just like a list (?)
+
+--nudge is expressed in seconds and can be passed a sine wave
+
+d1 $ every 8 (density 4) $ (chop 64 $ sound "sn bd buchla jx:49")
+  # nudge (slow 1 sine)
+
+
+d1 $ every 16 (density 8) $ (chop 1024 $ sound "sn bd buchla jx:49")
+  # nudge (slow 4 sine)
+
+d2 $ sound "[buchla*2, [~ 808:7*64]*2]"
+  # vowel "a e o i"
+
+-- HIGHER ORDER PATTERNING, The reason why you have to use brackets after every is because of the way it handles patterns
+
+d4 $ every 4 (# speed 8) $ every 3 (# vowel "a e o") $ sound "buchla:4*3"
+
+d3 $ jux (iter 8) $ sound "bd sn [buchla, tok:5] 808:4"
+
+hush
+
+d4 $ slow 4 (superimpose (iter 12) $ sound "cp cp cp ~ cp cp ~ cp ~ cp cp ~")
+
+-- Difference beween ! and *
+
+-- ! takes up 3 steps
+d1 $ sound "[bd arpy]!3 sd"
+
+-- * takes up 1 step
+d1 $ sound "[bd arpy]*3 sd"
+
+--OFF
+d1 $ off 0.125 (# speed "4 5 6 9") $ n "0 3 [~ 2] 4" # sound "micron"
+
+hush
+
+
+-- original
+d1 $ sound "buchla sd buchla:9 cp"
+
+--off
+d1 $ jux (iter 8) $ off 0.125 (# speed "2") $ off 0.25 (# crush "4") $ sound "buchla sd buchla:9 cp"
+
+--off is an amazing way to build up a performance from a super basic element into something very complex
+
+d1 $ sound "buchla sd? buchla:9 cp?"
+
+-- techno basics
+d1 $ off (-0.125) (slow 4) $  off 0.125 (# up "[12, 0] 24 27 30") $ off 0.25 (# vowel "a e i o")
+$ sound "buchla sd? [buchla:9, buchla:9] cp?"
+
+-- use off to build on super simple patterns
+d4 $ stack[
+sound "buchla*2" # gain "1.9",
+sound "[~ 808:7!3?]*2",
+slow 2 $ every 3 (slow 4) $ sound "cp"
+]
+
+hush
+
+--holy shit you can also do this
+
+d1 $ n ("0 [3 6] [~ 2] 4" + irand(4)) # sound "micron"
+
+-- you _can_ just add integers to patterns. wat.
+
+-- SCRATCHPAD GOES DOWN HERE
+
+hush
+
+cps 1.1
+
+d1 $ sound "buchla:8 808:9? buchla:9 808sd:4"
+
+d1 $ off (-0.125) (slow 8) $ off 0.125 (# speed (slow 2 $ "8 4 2")) $ off 0.25 (# vowel "a e u o") $ sound "buchla:8 808:9? buchla:9 [808sd:4? adlib:4]"
+
+hush
+
+cps 1.1
+
+d1 $ off (0.125/2) (# speed 2) $ off 0.125 (# speed 4) $ off (0.125/4) (# speed 8) $ slow 8 $ sound "knives(<3 4 5 1 2 5 2>,8)" # lpf "1700" # end (slow 4 $ "0.1 0.2 0.3 0.4")
+
+d1 silence
+
+d1 $ sometimes (slow 5) $ sometimes (slow 6) $ slow 4 $ sound "adlib:4" # gain "1.2"
+
+d1 $ slow 4 $  sound "adlib:2 ~ ~ ~"
+
+d2 $ loopAt 80 $ chop 64 $ off 0.5 (# speed "1.01") $ sound "BOC:3" # gain "1.5"
+
+d7 silence
+
+d7 $ loopAt 80 $ chop 64 $ off 0.5 (# speed "1.01") $ sound "BOC:5" # gain "1.5"
+
+d4 $ off 0.5 (# speed 0.8) $ off 0.125 (# sound "cb") $ off 0.25 (# speed "2") $ off 0.75 (# speed "3") $ degradeBy 0.95 (sound "[buchla:9*8, cp*8]")
+
+d5 $ sound "[~ cym:2]*2"
+
+hush
+
+cps 1.4
+
+d1 $ jux (iter 4) $ sound "bd*2 cp bd"
+
+d3 $ every 4 (0.25 ~>) $ every 5 (0.5 <~) $ off 0.25 (# speed "9") $ degradeBy 0.7 $ sound "[lt mt ht](3,8)" # gain "1" # speed "0.8"
+
+d3 silence
+
+d5 silence
+
+d5 $ every 12 (density 196) $ sound "hh" # gain "1.3"
+
+d2 silence
+
+d4 $ sound  $ samples "808" (irand(10))
+  # crush "1"
+
+
+cps 1.1
+
+d8 $ sometimes (density 2) $ sound "hh*8" # speed "2"
+
+d9 silence
+
+d9 $ rarely (density 2) $ sound "buchla:7*2" # gain "1.2"
+
+-- a yaxu classic
+
+d1 $ off 0.5 (# sound "jx") $ slow 2 $ n (off 0.125 (+12) $ off 0.25 (+ "<5 7 24>")
+  $ slow 2 "d6(3,8) a7(3,8) [c7*2 c6] e7(3,8)")
+  # s "rash"
+
+d7 $ loopAt 8 $ randcat [
+chop 64 $ sound "hardstyle",
+chop 64 $ sound "hardstyle:2",
+chop 64 $ sound "hardstyle:3"
+]
+
+d1 $ sound "buchla*2"
+
+hush
+
+d1 $ loopAt 8 $ chop 64 $ sound $ samples "hardstyle" (irand(3))
+
+d2 $  sound "~ cp"
+
+cps 1
+
+d2 silence
+
+hush
+
+cps 1
+
+hush
+
+d1 $ slow 4 $ sound "buchla "
+
+d2 $ slow 3 $ sound "buchla?"
+
+d5 $ jux (iter 8) $ off 0.125 (# speed "8.3") $ sound "buchla? buchla:4? buchla:9? buchla:40?" # speed "2"
+
+
+d4 silence
+
+hush
+d4 silence
+
+hush

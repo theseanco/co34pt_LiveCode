@@ -42,8 +42,10 @@ d[\scale] = Scale.chromatic(\et53);
 l = Pbjorklund2(Pwhite(1,13),16)/4;
 ~r = {0};
 ~sinfb = Pbind(\instrument,\sinfb,\scale,Scale.minor,\root,Pkr(~r),\octave,4,\degree,0,\dur,l,\amp,0.3,\fb,0.1,\rel,0.3);
+~ring1 = Pbind(\instrument,\ring1,\f,Pkey(\freq),\scale,d[\scale],\root,Pkr(~r),\degree,Pwhite(-1,1),\octave,2,\dur,0.25,\d,Pexprand(0.2,0.4),\a,Pexprand(1,400),\pan,0,\amp,0.9);
 )
 
 
-~sinfb.play
+
 ~sinfb.set(\fb,~sin)
+~sinfb.play

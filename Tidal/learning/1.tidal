@@ -1,0 +1,298 @@
+d1 $ sound "bd*2"
+
+d2 $ sometimesBy 0.1 (density 3) $ sound "[ cp [arpy arpy:6], cp:4]"
+
+-- Playing one step per cycle is an interesting one
+
+d1 $ sound "cp <bd*3 gab/4>"
+
+-- if a divider is used on these things it can make particular samples only play x number of repetitions
+
+d1 silence
+
+d1 $ slow 2 $ sound "[[bd sn]*2 cp]/2 [sn:4 sn [sn:9 bd]/2]"
+
+hush
+
+d1 $ every 3 (rev) $ sound "bd*2 [bd sn:5 sn*2 sn] sn]"
+
+
+hush
+
+-- effects are added with the # operator
+
+
+d1 $ spin (3) $ every 7 (density 2) $ sound "bd*4" # crush "4" # speed "3 9 4 <5 6 12 9>"
+
+-- speed before samples, the first pattern given specifies the number of items in a pattern that's carried
+d2 $ speed "<[1 1] 2 5 9 10> 3 5" # sound "gab"
+
+
+d1 $ every 2 (|=| speed "2") $ every 3 (|*| speed "0.5") $ sound "arpy*4" |=| speed "1" # (slow 3 $ vowel "a e o")
+
+-- if you want to aff a function to an effect, it takes this syntax:
+
+(slow 4 $ effect "1 2 3 4")
+
+--using n for patterns
+d1 $ sound "arpy(3,8)" # (slow 2 $ n "2 5 3 8 1 2")
+
+-- patterns of numbers also simple numbers
+d1 $ sound "arpy(3,8)" # n (every 4 (* 9) "2 9")
+
+-- huh
+d1 $ n (off 0.125 (+12) $ off 0.25 (+7) $ slow 2 $ "0(3,8) [5 7]") # sound "supergong"
+
+-- the range function is super mad, shame it doesn't actually work.
+d1 $ n "0..7 3..1" # sound "supergong"
+
+--goes to: this doesn't seem to actually wotk
+d1 $ n "[0 1 2 3 4 5 6] [3 2 1]" # sound "supergong"
+
+--up is used to scale things to a 12 tone scale. holy shit.
+d1 $ up "0 1 2 3 4 5 6 7 8 9 10 11" # sound "arpy"
+
+-- These next three lines are a lovely rave
+
+cps 1
+
+d1 $ up "[<0 -2 0 <2 4 12>>](<3 3 3 3 5>,<8 8 8 4>)" # sound "knives"
+
+d2 $ sound "[amencutup*8, bd:2*2]" # n (run 32) # crush "<10 12 14 16 4>"
+
+d2 silence
+
+d4 $ slow 5 $ sound "rave"
+
+hush
+
+-- omg patterns are so fun
+d5 $ n "[0*2, 0 <5 7*2> [6,4] [2*8, ~ 4]]" # s "drum" # (slow 2 $ pan "0 1 -1 0.75 0.25 1")
+
+d5 silence
+
+-- using arrays of sounds against 'up' scales sounds
+d1 $ stack[
+ up "[0(3,8), 7(4,8), 12]" # sound "[knives, bd:4]"
+ ]
+
+
+-- run is used to run through samples
+d1 $ n (run 4) # s "bd"
+
+-- 'samples' also works
+d1 $ jux (iter 4) $ sound $ samples "arpy*4" (run 4)
+
+-- note that in the above pattern you can't just add a # at the end
+d1 $ jux (iter 4) $ sound $ samples "arpy*4" (run 4) # speed "2"
+
+-- has to be evaluated as another function
+d1 $ (|=| (slow 3 $ speed "0.25 0.5 0.75")) $ jux (iter 8) $ density 2 $ sound $  samples "arpy*4" (run 8)
+
+d2 $ jux rev $ sound "[bd(<3 3 7>,8) , [cp hh*4]]"
+
+-- M O D U L A T I O N!
+
+d1 $ sound "[bd*2 sn*2, hh:6*8]" # pan (slow 2 $ scale (-1) 1 $ tri) # (slow 6 $ speed "1 0.9 0.8")
+
+hush
+
+-- slow is a function, scale is a function, sine is a function, they need to be bracked into 'speed'
+
+d1 $ sound "arpy*16 ~" # speed (slow 6 $ scale 1 10 $ sine)
+
+-- polymetric rhytms
+-- this one is a bit baffling and i don't quite get it
+d1 $ sound "{cp:5 tok can hh arpy, bd sn hh:7}"
+
+-- ah so if a quarter of a cycle was one note of a 4/4 riff this is a 5/4 riff
+d1 $ sound "{arpy bass2 drum notes can}%4"
+
+
+-- more playing around
+d2 $ n (irand(8)) # s "[drum]"
+
+d1 $ (|=| (slow 3 $ speed "0.25 0.5 0.75")) $  jux (iter 8) $ every 4 (0.125 <~) $   density 2 $ sound $ samples "arpy*4" (run 8)
+
+hush
+
+-- shifting
+d1 $ every 3 ((0.125/2) <~) $ jux rev $ n (run 8) # s "arpy" # delay "0.1"
+
+d2 $ sometimesBy 0.1 (slow 5) $ sometimesBy 0.2 (density 4) $ sound "bd(3,8)"
+
+hush
+
+--randomness
+
+d1 $ n (run 8) # s "arpy" # crush (slow 9 $ scale 2 6 $ rand)
+
+--degrading
+
+d1 $ (|=| (slow 2 $ up "[-12 -7, -7 -12]")) $ degradeBy 0.5 $ rarely (density 2) $  jux (iter 8) $ density 2 $ sound $ samples "arpy*4" (run 8)
+
+d2 $ brak $ sound "[bd:3*2, cp:3(3,8)?]" # gain "2" # speed (slow 2 $ "1 1 1 -1") # pan (scale (-1) 1 $ rand)
+
+d3 $ sound "[rave silence ~ ~ rave rave]" # cut "1" # speed ( slow 9 $ "1.4 1.2 1.3 -7.4" ) # cutoff (slow 9 $ scale 800 2000 $ sine) # resonance "0.1" # gain "1.5"
+
+d3 $ sound "[rave ~ ~ ~ rave rave]" # legato "1" # speed "1.4"
+
+hush
+
+-- complexity
+
+d1 $ stack[
+  every 5 (|+| speed "0.5") $ every 4 (0.25 <~) $ every 3 (rev) $
+   sound "{bd sn arpy*2 cp}"
+   # speed "[1 1.25 0.75 -1.5]/3"
+   ]
+
+
+-- modifying and replacing patterns
+-- const can switch out entire patterns
+d1 $ stack [
+density 2 $ every 12 (const $ sound "arpy*3") $ sound "bd sn cp hh",
+density 2 $ every 11 (const $ sound "arpy:4*3") $ sound "bd sn cp hh" # ( slow 4 $ speed "0.75 -1" )
+]
+
+hush
+
+
+-- cat combines patterns
+d1 $ slowcat [ (|=| (slow 2 $ up "[-12 -7, -7 -12]")) $ degradeBy 0.5 $ rarely (density 2) $  jux (iter 8) $ density 2 $ sound $ samples "arpy*4" (run 8),
+ brak $ sound "[bd:3*2, cp:3(3,8)?]" # gain "2" # speed (slow 2 $ "1 1 1 -1") # pan (scale (-1) 1 $ rand)]
+
+-- i already know about stack, but functions can be applied on the entire stack
+d1 $ stack [
+density 2 $ every 12 (const $ sound "arpy*3") $ sound "bd cp cp hh",
+density 2 $ every 11 (const $ sound "arpy:4*3") $ sound "bd [hh [can can [tok can can]]]" # ( slow 4 $ speed "0.75 -1" )
+] # (slow 4 $ up "[0 1 2 3 4 5]")
+
+-- cut works in groups
+d1 $ stack [
+   sound (samples "arpy*8" (run 8)) # speed "0.5" # cut "1",
+   sound (samples "bass2*6" (run 6)) # speed "0.75" # cut "2" ]
+
+-- transition
+
+d1 $ sound (samples "hc*8" (iter 4 $ run 4))
+
+t1 anticipate $ sound (samples "bd(3,8)" (run 3))
+
+t1 (xfadeIn 16) $ sound "bd(5,8)"
+
+t1 anticipate $ n ("0 1 2 3 4") # s "arpy"
+
+hush
+
+-- synths do this
+
+d1 $ n "c4 [es4, [c2, ef4, g3]] g4" # s "supersaw"
+
+hush
+
+
+d1 $ n "<[a5,cs5,e5,g5](3,8) [d5,fs5,g5,c5](5,8,<0 1 2 3 4 5 6 7>)>" # s "supersquare" # gain "0.7"
+
+d2 $ sound "~ hh ~ ~ ~ ~ ~ ~ hh"
+
+t1 (anticipateIn 16) $ s "super808*2"
+
+hush
+
+d1 $ sound "feel*4 [feel:2 sn:2]"
+
+t1 (superwash (# accelerate "4 2 -2 -4") (striate 2) 1 4 6) $ sound "bd [odx:2 sn/2]"
+
+hush
+
+cps 1.15
+
+d1 $ slow 2 $ rarely (0.25 ~>) $ sometimes (|+| speed "-1") $ sometimes brak $ jux (iter 4) $ sound "[bd:2*4, cp(3,8)]"
+
+d2 $ sometimes (0.25 ~>) $ brak $ sound "hh*8" # gain "1"
+
+d4 $ sound "bass2*2"
+
+d3 $ up "<0 0 <3 ~> 5>(<3 3 3 3 5>,8)" # sound "knives" # cut "1"
+
+d4 $ sound $ samples "[amencutup*8, drum*8]" (irand (16))
+
+d2 silence
+
+d3 silence
+
+d3 $ rarely (density 2) $ sound "hh*8" # shape ( slow 4 $ scale 0.2 0.5 $ sine) # (speed  $ every 3 (9) $"1 3 4")
+
+d2 $ (|+| speed "[0.5]") $ rarely (# speed "-0.5") $ every 4 (0.125 ~>) $ degradeBy 0.25 $ brak $ jux rev $ n ( off (0.125) (+irand(8)) $ run 4) # s "arpy"
+
+d2 silence
+
+t1 (clutchIn 8) $ sound "[hh*4, odx(3,8)]"
+
+hush
+
+d1 $ almostNever brak $ sometimes (0.125 ~>) $ jux rev $ up "[0 2 3, 12 14 15](3,8)" # sound "lbass" # ( crush $ slow 10 $ scale 3 13 $ sine)
+
+d2 $ sound "bd(3,8)"
+
+d3 $ jux (0.25 ~>) $ rarely (density 2) $ brak $ n "c3 [c5, c2 , c4] c4 <c6 [g4, ef3]>" # s "superpiano" # resonance "0.9"
+hush
+
+d4 $ jux (iter 4) $ jux ((|+| speed "<3 3.1>")) $ sound "lbass(3,8,<0 1 2 3 4 5 6 7>)"
+
+hush
+
+d6 $ sound "object*9" |+| ( slow 2 $ speed "1.7 1 6 9 5 7 8 10 11 12 13 14 15 16 17") |+| gain "2"
+
+d1 $ every 4 (0.125 ~>) $ jux (iter 4) $ superimpose (|+|speed "2")$ n "[0, <3 3 3 7 2 2 2 2>, 5](3,8)" # sound "superpiano"
+
+
+d1 silence
+
+d2 $ sometimes (|*| speed "[2 4]") $ up "12*4" # sound "lbass" # cut "1" # gain "0.9"
+
+d3 silence
+
+hush
+
+d1 $ jux ((|*| speed 0.5)) $ sometimesBy 0.25 (jux (0.125 ~>)) $ s "object:3(<3 13 3 3 5 7>,<8 16 8 8 8 8>)" # cut "1" # (slow 4 $ speed "2 3 5 1.5 2.89 1.5")
+
+d5 silence
+
+cps 1.2
+
+d5 $ sound "[bd(3,8), cp:1(7,8)?]" # gain "1.2" # shape "0.7"
+
+d3 $ jux (iter 4) $ sound "[bd*2, ~ ~ ~ hh:0*4]"
+
+-- this pattern is great
+d4 $ jux (0.125 ~>) $ spin (2) $ n "{[gf5, <gf4 gf8 gf4 g4 gf4 g4 g4>, gf6, d4, d5, df6, <cf4 cf4 cf6 cf5>]}(3,8,<0 1 2 3 4 5 6 7>)" # sound "supersaw" # (crush $ slow 11 $ scale 3 10 $ tri) # (resonance $ slow 25 $ scale 0.99 0.1 $ sine) # gain "1.01"
+
+-- this pattern is great
+d4 $ jux (0.125 ~>) $ spin (2) $ n "{[gf5, <gf4 gf4 g4 gf4 g4 g4>, gf6, <cf4 cf4 cf6 cf5>]}(3,8,<0 1 2 3 4 5 6 7>)" # sound "supersaw" # (crush $ slow 11 $ scale 3 10 $ tri) # (resonance $ slow 25 $ scale 0.99 0.1 $ sine)
+
+hush
+
+d2 $ sometimesBy 0.25 (density 2) $ every 4 (0.25 ~>) $ sound "cp cp cp cp" # speed "-1 -0.5 0.5 1"
+
+hush
+
+d5 $ sometimes (0.5 <~) $ jux rev $ jux (0.125 ~>) $ n "c3 g3 c4 [g5, ef4 ef6 ef7]" # s "superpiano" # (cutoff $ slow 7 $ scale 1000 3000 $ sine)
+
+d1 $ spin 3 $ jux (iter 3) $ n "<d4 cs4> [<d3 cs3>]" # s "superpwm"
+
+d4 silence
+
+d3 silence
+
+d2 silence
+
+d2 $ sound "bd*2" # gain "1.2"
+
+d2 $ up "[9 14]" #  sound "lbass:2" # cut "1"
+
+d3 $ degrade $ brak $ slow 2 $ jux rev $ sound "bd cp hh [can tok [can can cp]]" # gain "2" # ( slow 4 $ speed "-1 1 0.5 0.75")
+
+
+d4 $ jux (iter 6) $ degrade $ n "d e f g a bf" # s "superpiano" # (pan $ scale (-1) 1 $ rand)

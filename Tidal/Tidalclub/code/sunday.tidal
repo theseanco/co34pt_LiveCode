@@ -1,0 +1,288 @@
+d1 $ stack [
+jux (iter 4) $ jux (iter 8) $ sound "~ cp ",
+sometimes (density 2) $ "buchla"
+]
+
+d3 $ sound ""
+
+-- stack
+d1 $ every 3 (fast 2) $ stack [
+every 2 (# speed "-1") $
+sound "~ sn cp hh(3,8)",
+sound "buchla(3,8)"
+]
+
+-- cat
+d1 $ every 3 (fast 2) $ cat [
+every 5 (# speed "-1") $
+sound "~ sn cp hh(3,8)",
+sound "buchla(3,8)"
+]
+
+cps 1.15
+
+d1 $ off 0.25 (# speed "1.5") $ every 12 (jux (iter 8)) $ every 6 (fast 2) $ cat [
+every 5 (# speed "-1") $
+sound "~ sn cp hh(3,8)",
+sound "buchla(3,8)",
+sound "cb(7,8)?"
+]
+
+d2 $ every 12 (density 12) $ sound "buchla:8*2"
+
+-- replace all sound with another pattern every x cycles
+d4 $ every 3 (const (sound "buchla*95")) $ sound "repetition" # cut 1
+
+hush
+
+-- this is an interesting thing to look at
+-- you control the duration of the patterns with the first pattern
+d3 $ seqPLoop [
+  (0, 2 , sound "buchla(3,8)"), -- two repetitions of this
+  (1,5, loopAt 4 $ chop 8 $ sound "paper"), --three cycles of this spread over four
+  (3,4, sound "adlib:8"),
+  (4, 8 , sound "buchla(3,8)"),
+  (5, 8, sound "cb*5"),
+  (5,8,  sound "[~ hh]*2")
+]
+
+hush
+
+cps 1.05
+
+-- Debug OSC packets with wireshark
+
+"""
+in the OSC code there's an interesting example basically transforming beats into colours
+
+For turning a sound into a colour, there's an interesting thing wehere you take a hash of a sound value
+
+SuperDirt has a default latency of 0.4, this is something that needs to be accounted for!
+
+legato is on automatically for superdirt synths
+"""
+
+cps 1
+
+d1 $ density 8 $ n ("a b c d e f g" + "<0 7 12 2 4>")  # sound "supermandolin"
+  # legato 14
+
+--shortcut syntax
+
+d1 $ n ("0 .. 19")  # sound "supermandolin"
+  # legato 14
+
+d1 $ n (every 3 (+3) $ "0 7") # sound "superpiano"
+
+hush
+
+hush
+
+d1 $ n (irand(8))
+  # sound "superpiano"
+  |+| n "<0 8 12 14>"
+
+d1 $ jux (iter 8) $ sound "drum*8" # n (irand 8) # speed ((irand 2) - 1)
+
+hush
+
+"""
+!!be careful if you are using multiple random numbers!!
+!! the random is _not_ seeded. You'll need to speed up the randomness
+"""
+
+d1 $ sound "buchla(3,8)"
+
+d2 $ fast 4 $ off (3/4/2/2) (# speed "11.3") $ off (3/4/2) (# speed "10") $ off (3/4) (#speed "9.91") $ slow 6 $ sound "buchla*2" # speed "1.4"
+
+d2 silence
+
+d4 $ off 0.125 (# speed "1.5") $ superimpose (iter 4) $ sound "[hh(3,8,<3 5 6 1 2 3>), ~  cp?]"
+
+d6 silence
+
+d2 silence
+
+d1 silence
+
+d6 $ sometimes (chop 3) $ sometimes (# speed (-1)) $ sound $ samples "~ adlib?" (irand(8))
+
+d3 $ almostNever (# speed "-1") $ sound "buchla*2"
+
+:t choose
+
+hush
+
+-- swing is good
+d4 $ swingBy (1/4) 4 $ sound "808:10*8"
+
+import Sound.Tidal.MIDI.Context
+import Sound.Tidal.MIDI.Synth
+
+displayOutputDevices >>= putStrLn
+
+devices <- midiDevices
+
+
+m1 <- midiStream devices "qjackctl" 1 synthController
+
+m1 $ n "a c e g"
+
+d
+
+d4 $ never (off 0.75 (# speed "2")) $ never (off 0.25 (# speed "1.4")) $ sound "buchla buchla*3"
+  # vowel "a [e i u o u]"
+  # hpf "200"
+
+d4 $ degrade $ sometimes (jux (iter 4)) $ almostAlways (off 0.75 (# speed "2")) $ sometimes (off 0.25 (# speed "1.4")) $ sound "[buchla, hh*3?] buchla*3"
+  # vowel "a [e i u o u i e]"
+  # hpf "500"
+  # resonance "0.9"
+
+
+d5 $ jux (iter 6) $ every 7 (fast 2) $ superimpose (|*| speed "2") $ up "[0 12 5 3 7 6, 12 13 17]" # s "lbass:2" # legato 0.4
+  # lpf (slow 15 $ scale 100 7000 $ sine )
+  # resonance "0.7"
+
+d6 silence
+
+d6 $ sound "buchla:37*3"
+  # gain "1.4"
+
+d2 $ fast 3 $sound "~ drum:8"
+
+d6 $ slow 4 $ sound "adlib?"
+
+d6 silence
+
+d6 $ jux (iter 4) $ sound "drum*2"
+  # nudge "0.01 0.4"
+
+  hush
+
+-- reverb, you need to be careful about orbits and reverb, add more orbits in the SuperDirt startup file
+d1 $ sound "buchla"
+  # room "0.9"
+  # size 0.9
+  # orbit 1
+
+  d1 silence
+
+d1 $ fast 3 $ slow 4 $ sound "buchla*4"
+
+hush
+
+d2 $ jux (iter 4) $  off (1/3/2) (#  (slow 10 $ speed "1.5 ! ! ! 1.6")) $ jux rev $ sound "arpy*3"
+  # room "0.9"
+  # size "0.9"
+  # orbit 1
+  # legato 0.3
+
+
+d4 $ fast 3 $ sound "[~ donk:0*2, buchla:49]"
+
+d5 $ fast 1.5 $ sound "cp"
+
+cps 1.45
+
+d4 $ sound "cp"
+
+hush
+
+cps 1.3
+
+-- evaluate if you want to be BANGING
+d5 $ stack [
+almostNever (jux(iter 4)) $ every 4 (density 2) $ ( # speed (slow 7 "1 1 -1 1.5")) $ sound $ samples "[[~ donk]*2]" (choose [0,1,2]),
+sound "buchla*2"
+]
+
+-- whenMod
+
+d1 $ every 4 (fast 2) $ sound "bd"
+
+-- 4 out of every 1
+d1 $ whenmod 16 4 (fast 2) $ sound "bd"
+
+hush
+
+-- making your own abstractions
+
+d1 $ rev $ chop 16 $ sound "bd"
+
+-- say you're using 'rev $ chop 16' a lot
+
+let revChop p = rev $ chop 16 p
+
+d1 $ revChop $ sound "bd"
+
+cps 1.44
+
+d1 $ almostNever (jux(iter 4)) $ every 4 (density 2) $ ( # speed (slow 7 "1 1 -1 1.5")) $ sound $ samples "[[~ donk]*2]" (choose [0,1,2])
+
+hush
+--accelerate is lovely
+
+--weave:
+-- the vowels chase each other up the musical scale
+
+d1 $ weave 16 (n "0 1 2 3 4 5 6 7" # sound "arpy")
+  [
+  vowel "a e i",
+  vowel "o i",
+  speed "0.25 0.5 1 2"
+  ]
+
+  d3 $ sound "bd*3"
+
+  hush
+
+
+scales can be used: Sound.Tidal.Scales
+
+-- LOOK HERE FOR TUNINGS!!
+
+https://github.com/musikinformatik/SuperDirt/blob/1.0-dev/hacks/pitch-model-from-tidal.scd
+
+d1 $ slow 2 $ s "gabor*8" # degree "0 1 2 3 4 5 6 7 8 53" # octave "4" # mtranspose "{0 1}/8" # scale "chromatic"# tuning "et53"
+
+hush
+
+-- this works!
+
+let (degree, degree_p) = pF "degree" (Nothing)
+    (ctranspose, ctranspose_p) = pF "ctranspose" (Nothing)
+    (mtranspose, mtranspose_p) = pF "mtranspose" (Nothing)
+    (gtranspose, gtranspose_p) = pF "gtranspose" (Nothing)
+    (harmonic, harmonic_p) = pF "harmonic" (Nothing)
+    (detune, detune_p) = pF "detune" (Nothing)
+    (scale, scale_p) = pS "scaleName" (Nothing)
+    (tuning, tuning_p) = pS "tuningName" (Nothing)
+    (stepsPerOctave, stepsPerOctave_p) = pI "stepsPerOctave" (Nothing)
+    (octaveRatio, octaveRatio_p) = pF "octaveRatio" (Nothing)
+
+    d1 $ slow 2 $ s "supermandolin*8" # degree "0 -4 -7 0 6 3 6 23" # scale "chromatic24" # tuning "et24" # legato "4"
+
+-- there's also chords
+
+import Sound.Tidal.Chords
+
+enchord
+
+hush
+
+d2 $ density 1.5 $ sound "sn:3"
+
+d5 $ density 1.5 $ stack [
+sound "buchla(<4 5 6 7>,8)"
+]
+
+hush
+
+
+hush
+
+d1 $ off 0.125 (|*| speed "1.25") $ spread ($) [ fast 2,
+                  (# speed "2"),
+                  (# crush "4")
+                  ] $ sound "buchla cp sn hh"

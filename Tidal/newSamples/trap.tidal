@@ -1,0 +1,109 @@
+-- little trap/hip-hop vignette
+
+d1 $ slow 4 $ stack [
+sometimes (density 2) $ sound " ~ tsnare*4?",
+fast 2 $ sound "tkick(3,8)",
+slow 2 $ n "0 ~ ~ 12 0 ~ ~ 7" # s "p8082" # gain "1.3" # cut "1",
+every 21 (fast 8) $ sound "~ tclap(3,8)",
+fast 2 $ sound "~ shout:5",
+every 4 (fast 2) $ every 9 (fast 4) $ sound $ samples "that*8 ~ ~ ~ " (irand(8))
+]
+
+d2 $ slow 8 $ every 14 (jux rev) $ n "0 7 8 [10 3 2](3,8)" # sound "[tmel4, tmel3]" # legato 4 # gain "0.9"
+
+d3 $ jux rev $ every 3 (fast 8) $ slow 8 $ n "[0 2 3 7] ~ ~ ~" # sound "[tmel1, tmel2]" # gain "0.9"
+
+d4 $ slow 4 $ n "[0 0] ~ [0 0 0](3,8) 12" # sound "tmel1" # gain "0.9"
+
+d6 $ slow 2 $ sound "p8081(3,8, < 1 5 7 2 4 5 6 1 2 0>)" # gain "1.2"
+
+d6 silence
+
+cps 1.1
+
+-- end of trap
+
+hus h
+
+cps (140/120)
+
+d1 $ fast 0.5 $ slow 2 $ sound "technohit:1*3"
+
+d4 $ slow 2 $ sound "that(6,8)?"
+
+d2 $ sound "bk*2"
+
+
+d4 $ superimpose (|*| speed (slow 16 $ "1.5 1.25 [ 0.5 ,2 ] 0.5 0.75 0.25 [0.5 0.75] 0.25 0.33333333")) $ almostNever (jux rev) $ sound $ samples "[wtank, 808](<3 8 3 5 7 8 3 4>,8,<4 2 1 2 2 3 5 6 1 0 0 0>)?" (irand(16))
+
+d2 $ stack [
+every 7 (slow 4) $ sound "bk(3,8)",
+  every 10 (jux rev) $ every 11 (slow 10) $ sound "[~ crack]*2",
+  slow 4.5 $ sound "bigkick:2",
+  fast 2 $ every 9 (fast 8) $ sound "that:3*4"
+  ]
+
+  d5 $ sound "[~ hit:2]*2" # gain "1.4" # cut "4"
+
+  hush
+
+d1 $ (# gain "1.5") $ superimpose (|*| speed "[0.5, 0.75]") $ sound $ samples "glitt(<4 7 1 3 5 7 8 6 5 3 4>, 8, < 4 4 6 6 2 1 3 4 5 6 2 1> )" (irand(10))
+
+d4 $ slow 4.25 $ every 2 (slow 1.5) $ sound "cpl"
+
+hush
+
+d6 $ sound "vinyl"
+
+d8 $ every 10 (fast 2) $ sound $ samples "boom(3,8)" (irand(30))
+
+d7 $ sound "hit*8?"
+
+hush
+
+d7 $ stack [
+ loopAt 32 $ sound "atmos:2",
+ loopAt 30 $ sound "atmos:2",
+ loopAt 20 $ sound "atmos:2",
+ loopAt 16 $ sound "atmos:2",
+loopAt 10 $ sound "atmos:2",
+loopAt 6 $ sound "atmos:2"
+ ]
+
+solo $ d1 $ slow 2 $ stack [
+  slow 2 $ every 9 (|+| speed "-1") $ sound $ samples "wtank?" (irand (10)),
+  every 7 (|+| speed "-0.5") $ sound "boom(3,8)?",
+  slow 2 $ every 8 (|+| speed "-1") $ every 14 (fast 16) $ sound $ samples "glitt*8?" (irand(20))
+] # size "0.8" # room "0.9" # orbit "1" # gain "0.9"
+
+d1 silence
+
+d8 $ slow 2 $ stack [
+  slow 4 $ sound "p8082 ~ ~ p8082 ~ ~ ~ p8082" # speed "1 1 1 0.5" # gain "1.5",
+  every 9 (fast 4) $ sound "that(<6 2 2 6 4 5 6>,8,<0 3 5 2 1 2 4 5>)" # gain "0.8",
+  every 6 (fast 2) $ slow 2 $ sound "tsnare(<1 2 3 2 1 6>,8)" # gain "1.1",
+  jux (iter 8) $ jux (iter 4) $ sound "wtank*3?"
+  ]
+
+  hush
+
+d3 $ rarely (fast 2) $ rarely (jux rev) $ n "[0 2 3 7, -13 -11 -10 -6]" # sound "tmel4" # gain "0.7"
+
+d4 $ fast 2 $ degradeBy 0.75 $ superimpose (|*| speed "[0.5, 0.75]") $ jux rev $ up "<-12 0 -12 0 -12 12 24>? <3 10>? [5, 12]? <5 7 7 7 7 7 8 8 8 7>" # sound "[synshot:2, 808:8]" # gain "0.7" # legato 1 |*| speed "[1, 0.5]"
+
+d2 $ jux (iter 4) $ sound "bk:4(3,8)"
+
+
+d5 $ off 0.125 (|+| speed "2") $ jux (iter 8) $ sound "[~ rbang:1]*2" # speed "1.5"
+
+d3 $ slow 3 $ sound "cpl" # gain "1.4"
+
+d1 $ slow 4 $ sound "boom*4?" # speed "-1 1 0.5 -0.25" # gain "1.4"
+
+
+
+d8 $ sometimes (|+| speed "-1") $ slow 4 $ sound "wtank*4?" # orbit "1" # room "0.9" # size "0.9"
+
+hush
+
+  hush

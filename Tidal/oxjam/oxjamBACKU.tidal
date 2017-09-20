@@ -1,0 +1,71 @@
+
+cps (150/120)
+
+hush
+
+d4 $ stack [
+degradeBy 1 $ loopAt 8 $ chop 512 $ sound "trap:1" # speed "2"
+] # size "0.9" # room "0.9" # gain "0.8" # orbit 1
+
+d4 silenc e
+d1 silence
+
+sound "bk:8*2",
+d8 silence
+
+d1 $ stack [
+sound "glitt(5,8)" # n (irand(30)),
+fast 4 $ every 8 (fast 4) $ degradeBy 0.4 $ sound "wtank*2" # n (irand(40))
+]
+
+d1 silence
+
+d5 $ off 0.25 (|*| speed "1") $ off 0.125 (|*| speed "2") $ up "[0 7 12, 12 18 24](3,8)" # sound "mhit:2"
+
+d1 $ sound "bk:6*2"
+
+d2 $ sound "[~ cym]*2" # legato 0.8 # crush 4
+
+solo $ d4 $ sound "shout:2" # gain "0.8"
+
+d6 $ jux (iter 4) $ degradeBy 0.1 $ every 5 (fast 2) $ sound "[~ donk]*2" # speed (slow 4 $ "1 2 1 -1") # n (irand (10))
+
+d7 $ slow 16 $ sound "rave"
+
+
+d5 $ sound "donk*4" # n (irand(10)) # legato "1" # speed "[1,2]"
+
+hush
+
+d4 $ loopAt 8 $ chop 8 $ sound "hardstyle" # gain "0.0" # n (irand 10)
+
+d1 silence
+
+d2 silence
+
+d2 $ stack [
+loopAt 20 $ chop 16 $ sound "atmos:2",
+loopAt 16 $ chop 16 $ sound "atmos:2",
+loopAt 10 $ chop 16 $ sound "atmos:2"
+]
+
+
+
+d3 $ every 11 (|*| speed "4") $ every 5 (fast 2) $ jux (iter 2) $ degradeBy 0.2 $ jux rev $  up "0 < 12 12 12 12 14 15 15 15 14> 7 <3 24 3 3 3 5 7 10>" # sound "moog1" # n "[0]" # legato 1 # gain "0.8" # lpf (slow 7 $ scale 100 7000 $ sine) # resonance "0.7"
+
+d3 silence
+
+d6 silence
+
+d6 $  sound "moog2" # up "[0,3,<7 7 7 7 7 8 8 8 8 8 8 7 7 7 7 7 11 11 11 11>]" # room "0.99" # size "0.99" # orbit 1 # gain "0.6" # legato 1 # n 4 |*| speed "0.25" # lpf (slow 10 $ scale 400 4000 $ sine) # resonance "0.1"
+
+d4 silence
+
+hush
+
+d1 $ stack [
+  slow 2 $ sound "p8081 ~ ~ p8081 ~ ~ ~ p8081" # speed "1 1 1 1.5",
+  sound "bk*2",
+  sound "~ eacp",
+  fast 2 $ sound "mhit:3(<1 4 6 8 2 4 5 3>,8)"
+]

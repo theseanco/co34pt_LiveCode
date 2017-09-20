@@ -1,0 +1,127 @@
+cps (147/120)
+
+
+-- atmos
+d1 $ slow 1 $ stack [
+  loopAt 10 $ chop 8 $ sound "atmos:2",
+  loopAt 13 $ chop 8 $ sound "atmos:2",
+  loopAt 15 $ chop 8 $ sound "atmos:2",
+  loopAt 7 $ chop 8 $ sound "atmos:2"
+] # orbit "1" # room "0.2" # size "0.2" # gain "0.0"
+
+d1 silence
+
+
+
+-- drums
+d2 $ slow 2 $ stack [
+  slow 2 $ sound "p8082 ~ ~ p8082 ~ ~ ~ [~ p8082]" # speed "1 1 1 1 2",G
+  fast 4 $ every 9 (fast 4) $ sound "that:3*2?",
+  sound "~ tclap*2",
+  slow 3 $ sound "shout:2" # gain "0.7",
+  slow 4 $ sound "~ ~ ~ [tsnare [tsnare [tsnare [tsnare [tsnare(3,8)]]]]]"
+]
+
+-- trap loop
+d1 $ stack [
+  degradeBy 1 $ loopAt 16 $ chop 128 $ sound "trap:1" # speed "2"
+] # orbit "1" # room "0.9" # size "0.99" # gain "0.8"
+
+hush
+
+d1 $ every 11 (jux (iter 4)) $ sometimes (jux rev) $ every 9 (fast 2) $ slow 4 $ up "[0, 12] 0 [0 3 1](3,8) [12 13 14 15]" #  sound "tmel2" # gain "0.9" |*| speed "[1,2]" # orbit "1" # room "0.99" # size "0.99" # gain "0.3"
+
+d1 silence
+
+d2 $ degradeBy 0.9 $ rarely (off 0.25 (|*| speed "4")) $ rarely (off 0.125 (|*| speed "2")) $ jux (iter 8) $ up "{0 3 7 1 8}%4" # sound "moogb1" # gain "1" # n 2 # legato 0.6 # lpf (slow 10 $ scale 400 4000 $ sine) # resonance "0.2" |*| speed ("1.42 1.94 8.01 8.97") # orbit "1" # room "0.9" # size "0.99" # gain "0.8"
+
+d3 $ stack [
+  slow 4 $ sound "guit",
+  slow 7.25 $ sound "cpl",
+  sound "~ eacp:4",
+  sound "boom",
+  sound "glitt*8?" # n (irand(9)),
+  sound "bk:83*2"
+]
+
+
+d5 $ degradeBy 0.925 $ off 0.125 (|*| speed "4") $ off 0.25 (|*| speed "2") $ up "[1 <7 [7,12] [0,7]> <5 12 5 19>](3,8)" # sound "rbang" # n 4 # orbit "1" # room "0.9" # size "0.9" # gain "0.9" |*| speed "[1,2]"
+
+d5 silence
+
+d1 $ degradeBy 0.15 $ jux (iter 8) $ jux (iter 4) $ every 9 (rev) $ sound "bk? ~ technohit(3,8)? [glitt [tsnare [bk:5 808 808:4]] lofid:4]?" # legato 1 # speed "9"
+
+d1 silence
+
+d2 $ sound "303*8" # n (irand(8)) # legato 0.8 # accelerate (slow 10 $ scale 0.01 1 $ sine)
+
+d7 $ sound "bk:34*2"
+
+hush
+
+d1 $ sometimes (|*| speed "3") $ sometimes (# speed "1.5") $ jux (iter 8) $ degradeBy 0.25 $ every 4 (fast 2) $ sound "[~ donk]*2" # n (irand(2))
+
+d7 $ every 4 rev $ loopAt 2 $ chop 8 $ sound "arc"
+
+d8 $ loopAt 8 $ chop 16 $ sound "breaks:1" # gain "1"
+
+# n (choose [8,3,5,11,4])
+
+d1 $ slow 4 $  up "0(3,8) 0(3,8) 3(<3 1>,8) 5(<3 5 8>,8)" # sound "knives"
+
+:t choose
+
+hush
+
+d9 $ slow 9 $ sound "rave" #
+
+
+
+d1 $ stut 4 0.5 0.5 $ sound "guit"
+
+hush
+
+d1 $ shuffle 8 $ always (off 0.25 (|*| speed "2")) $  stut 4 0.5 0.5 $ sound "guit"
+
+d5 $ sound "sd:4"
+
+d4 $ sound "bk*2"
+
+cps (100/120)
+
+d4 $ sound "cp"
+
+
+d1 $ every 9 (fast 1.5) $ stack[
+shuffle 4 $ stut 4 0.5 0.5 $ sound "guit" # speed "[0.5,1,2]",
+shuffle 8 $ stut 4 0.5 0.5 $ sound "~ ~ ~ guit:2"
+]
+
+d2 $ degradeBy 1 $ every 9 (fast 2) $ slow 2 $ up ("{0 1 3 7 1 2 3}%8" * 0.24) # sound "moogb1" # legato (slow 10 $ scale 0.3 1 $ sine) # n "[2,3]" # accelerate (slow 4 $ scale 0 0.2 $ sine) # lpf (slow 10 $ scale 100 2000 $ sine) # resonance "0.3" # orbit "1" # room "0.99" # size "0.99" # gain "0.8"
+
+d8 $ rarely (jux(iter 16)) $ jux (iter 8) $ stack [
+degradeBy 0.4 $ jux rev $ up "0 1 2 3 4 5 6 7" #  sound "303" # legato 0.8 # n (irand(40)),
+degradeBy 0.4 $ jux rev $ up "0 1 2 3 4 5 6 7" #  sound "303" # legato 0.8 # n (irand(40)) # orbit "1" # room "0.8" # size "0.8" # gain "0.8" |*| speed "2"
+] |*| speed "90"
+
+d4 $ every 9 (0.25 <~) $ jux (iter 8) $  stack [
+sound "bigkick",
+sound "bd:4(3,8,<1 4 5 7 0 0 0 3 3 5 2 3 2 0 0 0 >)",
+slow 8 $ sound "shout:2" # gain "0.4",
+sound "[~ cym]*2" # legato 0.8 # crush "2",
+palindrome $ jux (iter 4) $ sound "eacp:4(3,8)",
+slow 7.125 $ sound "cpl",
+slow 2 $ sound "~ ~ ~ sn2"
+]
+
+hush
+
+d9 $ degradeBy 0.1 $ rarely (off 0.125 (|*| speed "1.5")) $ jux (iter 8) $ up "[<0 0 0 7> <12 [12,7] 5 3 12 12> <3 3 3 1 1 13 13>](3,8)" # sound "guit:5" |*| speed "2" # n "[5,~ ~ ~ 2]"
+
+d8 $ sound "bk:40*2"
+
+hush
+
+d1 $ jux (iter 4) $ sound "hh(3,8)"
+
+hush

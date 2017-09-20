@@ -1,0 +1,45 @@
+cps 1.4
+
+d1 $ sound "sr:9(<1 5 6 2 3 5 8 4 3>,8)"
+  # nudge (slow 4 $ sine)
+
+d4 $ rarely (density 1.5) $ sound $ samples "sr*4" (irand(100))
+
+d5 $ stack [
+  up ("[0 2 5](3,8)" + 12) # s"bk",
+  ]
+
+  d5 silence
+
+  hush
+
+  cps 1.5
+
+  d2 $ slow 4 $ sometimes rev $ rarely (# resonance "0.9") $ slow 1.5 $ sound "[bk:4(<2 2 2 2 7 6 5 8>,9),bk:9(<2 2 2 2 7 6 5 8>,9)]" # gain "1"
+
+  d2 silence
+
+
+  d1 $ weave 12 (sound $ samples "sr"(irand(100)))
+    [
+    lpf "400 1000 2000",
+    cutoff "0.9 0.2 0.4"
+    ] # orbit 1
+
+
+  d4 $ degradeBy 0.999 $ every 10 (jux rev) $ every 5 (|*| speed "8.25") $ every 17 (const (spin 4 $ sound "sr:9 sr sr")) $ jux (iter 6) $ sound "sr:9 sr:40 sr:30"
+    # up (slow 8 ("0 2 4 6 10" - 12))
+
+  d5 $ fast 1.5 $ every 9 (jux rev) $ sound "sr(5,9)"
+    # cutoff (slow 10 $ scale 10 200 $ sine)
+    # resonance "0.1"
+
+    d5 silence
+
+
+    d6 $ (# room 0.99) $ (# size 0.99) $ (# orbit 1) $ (# gain 0.8) $ (# speed (slow 7 $  ("0.9 0.8 1 1.125 2 1 4 5" - 3))) $ every 10 (jux (iter 8)) $ sound $ samples "sr*8" (irand(20))
+
+hush
+
+    d9 silence
+d9 $ degradeBy 0.8 $ slow 4 $ jux (iter 9) $ every 5 (slow 2) $ every 3 rev $ iter 6 $ sound "sr:8 [sr:40 [sr:90 sr:22 [sr:49, sr:49 sr:1 sr:9 ! !]]] sr:40"

@@ -1,0 +1,22 @@
+do
+   d1 $
+      every 5 (stut' 6 (0.125*3) (|*| speed "1.5")) $
+      every 2 (slow 1.5) $
+      every 3 (palindrome) $
+      slow 2 $ s "object7*1 object10*2 object0*1 object5*2 "
+      |=| n (every 4 (palindrome) $ every 3 (density 3) $ "0 12")
+      |=| cut "-1 1 -1 3 2"
+   d2 $
+      whenmod 6 3 (trunc (3/8)) $
+      whenmod 7 5 (slow 4) $
+      slow 2 $ s "object0*2 object3*8  object0*2 "
+      |=| n (every 3 (slow 2) $ every 3 (slow 1.5) $ run 12)
+      |=| cut "3"
+   d3 $
+      whenmod 7 5 (0.5 ~>) $
+      whenmod 8 6 (stut' 5 (0.125*3) (|*| speed "1.5")) $
+      slow 2 $ s "object5*8 object7*2 object1*8  "
+      |=| n (every 2 (density 2) $ every 2 (density 3) $ every 2 (palindrome) $ every 2 (rev) $ every 3 (0.25 ~>) $ every 3 (0.25 ~>) $ every 4 (density 2) $ "2 6 12 7 11 3 10 1")
+      |=| cut "4 2 1"
+
+    hush

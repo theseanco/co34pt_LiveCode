@@ -1,0 +1,38 @@
+cps (140/120)
+
+cps (100/120)
+
+
+
+d1 $ stack [
+  sound "p8081*2" # gain "1.6",
+  rarely (slow 4) $ slow 2 $ sound "tsnare ~ ~ [tsnare [tsnare ! ! [tsnare ! ! ! [tsnare ! ! !]]]]",
+  sound "[~ tclap*2]",
+  degradeBy 0.2 $ rarely (fast 2) $ jux (iter 16) $ sound "that:4*8",
+  sound "tkick(3,8)",
+  sound "[~ wtank:4]*2"
+  ]
+
+  d1 silence
+
+  hush
+
+d4 $ jux (iter 8) $ always (jux rev) $ always (off (0.25) (|*| speed 4)) $ always (off (0.125/2) (|*| speed "2")) $ always (off (0.125/4) (|*| speed "4")) $ up "{<0 [0,12]> 3 <7 5> 10 12}%8" # s "lbass:2" # legato 0.15 |*|  gain "0.5"
+
+d6 $ degradeBy 0.7 $ rarely (# speed "1.55") $ sometimes (|*| speed "1.5") $ jux rev $ jux (iter 32) $ fast 2 $ every 7 (fast 2) $ sound "mhit*4" # n (choose[0,0,0,0,0,0,0,0,1,2]) # gain "0.9"
+
+d6 silence
+
+d5 silence
+
+hush
+
+d5 $ stack [
+  loopAt 2 $ chop 10 $ sound "atmos:2",
+  loopAt 1.5 $ chop 10 $ sound "atmos:2",
+    loopAt 1.25 $ chop 10 $ sound "atmos:2",
+  ]
+
+
+hush
+:t choose
