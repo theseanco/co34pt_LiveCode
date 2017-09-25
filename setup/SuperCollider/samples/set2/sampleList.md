@@ -1,3 +1,12 @@
 k = 96 Buchla Kicks, provided by tuuun (http://tuuun.org/)
 cp = Vermona DRM1 Mk3 Claps, provided by tuuun (http://tuuun.org/)
 rim = Serge Rims, provided by tuuun (http://tuuun.org/)
+sn = Snares
+bell = 'bell-type' sounds
+waves = VOSIM single-cycle waveforms, graciously provided by tuuun (http://tuuun.org/)
+crev = claps with reverb
+cym = Cymbal Hit
+techno = Techno Stab
+rbang = Metallic radiator bang (recorded by me)
+drum = misc drum sounds
+vox = vocal sounds
