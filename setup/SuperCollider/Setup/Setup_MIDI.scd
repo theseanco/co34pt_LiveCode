@@ -19,7 +19,7 @@
  Task({
  	3.wait;
   	d = Dictionary.new;
-  	d.add(\foldernames -> PathName(thisProcess.nowExecutingPath.dirname +/+ "../samples/set1").entries);
+  	d.add(\foldernames -> PathName(thisProcess.nowExecutingPath.dirname +/+ "../samples/set2").entries);
 	for (0, d[\foldernames].size-1,
 		{arg i; d.add(d[\foldernames][i].folderName -> d[\foldernames][i].entries.collect({
 			arg sf;
@@ -36,7 +36,7 @@
 	MIDIClient.init;
 	5.wait;
   	"Setup done!".postln;
-	10.wait;n
+	10.wait;
 	d[\m] = MIDIOut.newByName("Scarlett 2i4 USB", "Scarlett 2i4 USB MIDI 1").latency = (0.2555);
 	"MIDI set up!".postln;
  }).start;
